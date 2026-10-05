@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grata Eco House</title>
+<style>
+:root{
+  --cream:#F4EFE6;
+  --paper:#FBF8F2;
+  --forest:#223b2d;
+  --forest-2:#2e4e3b;
+  --sage:#6f9079;
+  --sage-soft:#dce7dd;
+  --wood:#b5713b;
+  --wood-dark:#9a5c2c;
+  --ink:#1c231e;
+  --muted:#6a7268;
+  --sand:#e8ddc8;
+  --line:#ddd4c3;
+  --shadow:0 18px 50px -24px rgba(34,59,45,.45);
+  --radius:18px;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* ---------- HEADER ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,239,230,.86);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.hdr{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.brand .mark{width:38px;height:38px;flex:none}
+.brand .name{font-family:var(--serif);font-size:1.35rem;font-weight:700;letter-spacing:.3px;color:var(--forest);line-height:1}
+.brand .name small{display:block;font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--wood);font-weight:600;margin-top:3px}
+nav.main{display:flex;align-items:center;gap:28px}
+nav.main a{font-size:.9rem;font-weight:500;color:var(--ink);position:relative;padding:4px 0;cursor:pointer}
+nav.main a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--wood);transition:width .25s}
+nav.main a:hover::after,nav.main a.active::after{width:100%}
+.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--paper)}
+.lang button{border:none;background:none;font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.05em;color:var(--muted);padding:5px 10px;border-radius:999px;cursor:pointer;transition:.2s}
+.lang button.active{background:var(--forest);color:#fff}
+.hdr-right{display:flex;align-items:center;gap:16px}
+.burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:6px}
+.burger span{width:24px;height:2px;background:var(--forest);display:block;transition:.3s}
+.mnav{display:none;flex-direction:column;gap:4px;padding:14px 0 18px}
+.mnav.open{display:flex}
+.mnav a{padding:10px 0;border-bottom:1px solid var(--line);font-weight:600}
+.mnav .lang{align-self:flex-start;margin-top:10px}
+
+/* ---------- BUTTONS ---------- */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:.92rem;font-weight:600;padding:13px 26px;border-radius:999px;cursor:pointer;border:none;transition:.22s;white-space:nowrap}
+.btn-primary{background:var(--wood);color:#fff;box-shadow:0 10px 24px -12px rgba(181,113,59,.8)}
+.btn-primary:hover{background:var(--wood-dark);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--forest);border:1.5px solid var(--forest)}
+.btn-ghost:hover{background:var(--forest);color:#fff}
+.btn-dark{background:var(--forest);color:#fff}
+.btn-dark:hover{background:var(--forest-2);transform:translateY(-2px)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:76px 0 90px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--wood);margin-bottom:20px}
+.eyebrow::before{content:"";width:28px;height:1.5px;background:var(--wood)}
+.hero h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.7rem);line-height:1.05;color:var(--forest);font-weight:700;letter-spacing:-.5px}
+.hero p.lead{font-size:1.1rem;color:var(--muted);margin:22px 0 30px;max-width:30em}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.ticks{display:flex;flex-wrap:wrap;gap:14px 26px;margin-top:34px}
+.tick{display:flex;align-items:center;gap:9px;font-size:.9rem;font-weight:500;color:var(--ink)}
+.tick svg{width:19px;height:19px;flex:none}
+.hero-art{position:relative;aspect-ratio:1/.92;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);background:linear-gradient(160deg,#dce7dd 0%,#c4d6c6 55%,#b7cab9 100%)}
+.hero-blob{position:absolute;width:420px;height:420px;background:radial-gradient(circle,rgba(181,113,59,.18),transparent 70%);top:-120px;right:-120px;border-radius:50%;z-index:-1}
+
+/* ---------- SECTIONS ---------- */
+section.block{padding:72px 0}
+.sec-head{max-width:40em;margin-bottom:42px}
+.sec-head .eyebrow{margin-bottom:14px}
+.sec-head h2{font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--forest);line-height:1.1;font-weight:700;letter-spacing:-.4px}
+.sec-head p{color:var(--muted);margin-top:14px;font-size:1.03rem}
+.bg-paper{background:var(--paper)}
+.bg-forest{background:var(--forest);color:var(--sage-soft)}
+.bg-forest .sec-head h2{color:#fff}
+.bg-forest .eyebrow{color:#e9b588}
+.bg-forest .eyebrow::before{background:#e9b588}
+
+/* ---------- CARDS GRID ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:.28s;display:flex;flex-direction:column;min-width:0}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--sage)}
+.card .thumb{aspect-ratio:3/2;position:relative;overflow:hidden}
+.card .thumb svg{position:absolute;inset:0;width:100%;height:100%}
+.card .body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.card .tag{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--wood);margin-bottom:9px}
+.card h3{font-family:var(--serif);font-size:1.32rem;color:var(--forest);line-height:1.2;margin-bottom:9px;font-weight:700}
+.card p{font-size:.92rem;color:var(--muted);flex:1}
+.card .meta{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}
+.chip{font-size:.74rem;font-weight:600;color:var(--forest);background:var(--sage-soft);padding:5px 11px;border-radius:999px}
+.card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.card .price{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--forest)}
+.card .price small{display:block;font-family:var(--sans);font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card .arrow{font-size:1.3rem;color:var(--wood);transition:.2s}
+.card:hover .arrow{transform:translateX(5px)}
+
+/* ---------- BREADCRUMB ---------- */
+.crumb{padding:26px 0 6px;font-size:.82rem;color:var(--muted);display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.crumb a{cursor:pointer;font-weight:600;color:var(--sage)}
+.crumb a:hover{color:var(--wood)}
+.crumb span.sep{opacity:.5}
+
+/* ---------- FEATURE STRIP ---------- */
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.feature{text-align:center}
+.feature .ic{width:52px;height:52px;margin:0 auto 14px;border-radius:14px;background:var(--sage-soft);display:flex;align-items:center;justify-content:center}
+.feature .ic svg{width:26px;height:26px}
+.feature h4{font-family:var(--serif);font-size:1.1rem;color:var(--forest);margin-bottom:6px}
+.feature p{font-size:.86rem;color:var(--muted)}
+
+/* ---------- PRODUCT DETAIL ---------- */
+.pd{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:start}
+.pd-art{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;position:relative}
+.pd-art svg{position:absolute;inset:0;width:100%;height:100%}
+.pd h1{font-family:var(--serif);font-size:clamp(2rem,4vw,2.9rem);color:var(--forest);line-height:1.08;margin:8px 0 16px;font-weight:700}
+.pd .lead{font-size:1.05rem;color:var(--muted);margin-bottom:26px}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:28px}
+.spec{background:var(--paper);padding:16px 18px}
+.spec .k{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.spec .v{font-family:var(--serif);font-size:1.3rem;color:var(--forest);font-weight:700;margin-top:3px}
+.feat-list{list-style:none;margin:24px 0}
+.feat-list li{display:flex;gap:11px;padding:7px 0;font-size:.95rem}
+.feat-list li svg{width:20px;height:20px;flex:none;margin-top:2px}
+.price-box{background:var(--forest);color:#fff;border-radius:16px;padding:24px 26px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.price-box .pb-price{font-family:var(--serif);font-size:1.9rem;font-weight:700}
+.price-box .pb-price small{display:block;font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-soft);font-weight:600;margin-bottom:2px}
+
+/* ---------- FORM ---------- */
+.form-section{position:relative}
+.form-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:38px;max-width:720px;margin:0 auto}
+.form-card.inline{box-shadow:none}
+.form-head{text-align:center;margin-bottom:26px}
+.form-head .eyebrow{justify-content:center}
+.form-head h3{font-family:var(--serif);font-size:1.7rem;color:var(--forest);font-weight:700}
+.form-head p{color:var(--muted);font-size:.95rem;margin-top:8px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field.full{grid-column:1/-1}
+.field label{font-size:.78rem;font-weight:700;letter-spacing:.04em;color:var(--forest)}
+.field label .req{color:var(--wood)}
+.field input,.field select,.field textarea{font-family:var(--sans);font-size:.95rem;padding:12px 14px;border:1.5px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);transition:.2s;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--sage);box-shadow:0 0 0 3px var(--sage-soft)}
+.field textarea{resize:vertical;min-height:92px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--muted);margin-bottom:20px}
+.consent input{width:17px;height:17px;margin-top:3px;flex:none;accent-color:var(--forest)}
+.form-card .btn{width:100%;justify-content:center;font-size:1rem;padding:15px}
+.form-ok{display:none;text-align:center;padding:30px 10px}
+.form-ok .big{width:64px;height:64px;margin:0 auto 16px;border-radius:50%;background:var(--sage-soft);display:flex;align-items:center;justify-content:center}
+.form-ok h3{font-family:var(--serif);font-size:1.6rem;color:var(--forest);margin-bottom:8px}
+.form-ok p{color:var(--muted)}
+
+/* ---------- CTA BAND ---------- */
+.cta-band{background:linear-gradient(135deg,var(--forest) 0%,var(--forest-2) 100%);border-radius:24px;padding:52px;text-align:center;position:relative;overflow:hidden}
+.cta-band h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.4rem);color:#fff;margin-bottom:12px;position:relative}
+.cta-band p{color:var(--sage-soft);max-width:34em;margin:0 auto 26px;position:relative}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--forest);color:var(--sage-soft);padding:56px 0 76px;margin-top:0}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px}
+footer .brand .name{color:#fff}
+footer h5{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#e9b588;margin-bottom:16px}
+footer ul{list-style:none}
+footer ul li{margin-bottom:9px;font-size:.9rem}
+footer ul li a{cursor:pointer;color:var(--sage-soft);transition:.2s}
+footer ul li a:hover{color:#fff}
+footer p.small{font-size:.84rem;color:#9db4a3;margin-top:14px}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:.82rem;color:#9db4a3}
+.dom-row{display:flex;gap:14px;flex-wrap:wrap}
+.dom-row a{color:#9db4a3}
+.dom-row a:hover{color:#fff}
+
+/* ---------- VIEW TRANSITION ---------- */
+#view{animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .hero-grid,.pd{grid-template-columns:1fr;gap:34px}
+  .cards,.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .features{grid-template-columns:repeat(2,1fr);gap:30px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  nav.main,.hdr .lang.desk{display:none}
+  .burger{display:flex}
+}
+@media(max-width:560px){
+  .cards,.cards.two,.specs,.fgrid,.features{grid-template-columns:1fr}
+  .form-card{padding:26px 20px}
+  .cta-band{padding:38px 24px}
+  section.block{padding:52px 0}
+  .wrap{padding:0 18px}
+}
+
+/* ---------- PRINT ---------- */
+@media print{
+  header,footer,.cta-band,.burger{display:none}
+  body{background:#fff}
+  .form-card{box-shadow:none;border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="hdr">
+      <div class="brand" onclick="go('home')">
+        <svg class="mark" viewBox="0 0 48 48" fill="none"><path d="M24 5 7 19v24h12V30h10v13h12V19L24 5Z" fill="#223b2d"/><path d="M24 5 7 19h34L24 5Z" fill="#b5713b"/><circle cx="24" cy="24" r="3.3" fill="#F4EFE6"/></svg>
+        <div class="name">Grata<small data-i="brandsub">Eco House</small></div>
+      </div>
+      <div class="hdr-right">
+        <nav class="main">
+          <a onclick="go('home')" data-nav="home" data-i="navHome">Home</a>
+          <a onclick="go('products')" data-nav="products" data-i="navProducts">Products</a>
+          <a onclick="go('about')" data-nav="about" data-i="navAbout">About</a>
+          <a onclick="go('contact')" data-nav="contact" data-i="navContact">Contact</a>
+        </nav>
+        <div class="lang desk">
+          <button data-lang="lv" onclick="setLang('lv')">LV</button>
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+          <button data-lang="nl" onclick="setLang('nl')">NL</button>
+        </div>
+        <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <nav class="mnav" id="mnav">
+      <a onclick="go('home')" data-i="navHome">Home</a>
+      <a onclick="go('products')" data-i="navProducts">Products</a>
+      <a onclick="go('about')" data-i="navAbout">About</a>
+      <a onclick="go('contact')" data-i="navContact">Contact</a>
+      <div class="lang">
+        <button data-lang="lv" onclick="setLang('lv')">LV</button>
+        <button data-lang="en" onclick="setLang('en')">EN</button>
+        <button data-lang="nl" onclick="setLang('nl')">NL</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="view"></main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" onclick="go('home')" style="cursor:pointer">
+          <svg class="mark" viewBox="0 0 48 48"><path d="M24 5 7 19v24h12V30h10v13h12V19L24 5Z" fill="#fff"/><path d="M24 5 7 19h34L24 5Z" fill="#e9b588"/><circle cx="24" cy="24" r="3.3" fill="#223b2d"/></svg>
+          <div class="name">Grata<small data-i="brandsub">Eco House</small></div>
+        </div>
+        <p class="small" data-i="footTag">European manufacturer of energy-efficient timber frame houses.</p>
+      </div>
+      <div>
+        <h5 data-i="footProducts">Products</h5>
+        <ul id="footCats"></ul>
+      </div>
+      <div>
+        <h5 data-i="footCompany">Company</h5>
+        <ul>
+          <li><a onclick="go('about')" data-i="navAbout">About</a></li>
+          <li><a onclick="go('products')" data-i="navProducts">Products</a></li>
+          <li><a onclick="go('contact')" data-i="navContact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-i="footContact">Contact</h5>
+        <ul>
+          <li><a href="mailto:info@grata-eco-house.com">info@grata-eco-house.com</a></li>
+          <li id="footCountry"></li>
+        </ul>
+        <div class="dom-row" style="margin-top:16px">
+          <a href="https://www.grata-eco-house.lv">LV</a>
+          <a href="https://www.grata-eco-house.com">EN</a>
+          <a href="https://www.grata-eco-house.org">NL</a>
+          <a href="https://www.grata-eco-house.de">DE</a>
+          <a href="https://www.grata-eco-house.fr">FR</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Grata Eco House. <span data-i="rights">All rights reserved.</span></div>
+      <div data-i="builtWith">Timber frame houses · Energy class A</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   GRATA ECO HOUSE — multilingual landing site
+   Structure: home -> products -> category -> product
+   Languages: LV / EN / NL · Inquiry form on every page
+   ============================================================ */
+
+/* ---------- SVG illustration generator (no external images) ---------- */
+function houseArt(variant){
+  const skies={
+    a:["#dce7dd","#b7cab9"], b:["#e8ddc8","#d6c3a0"], c:["#cfe0e4","#aec8ce"],
+    d:["#e3dcea","#c9bcd6"], e:["#dfe7d6","#c2cfb3"], f:["#eadfd4","#d8c3ad"]
+  };
+  const s=skies[variant]||skies.a;
+  return `<svg viewBox="0 0 400 267" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="sky${variant}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${s[0]}"/><stop offset="1" stop-color="${s[1]}"/></linearGradient></defs>
+    <rect width="400" height="267" fill="url(#sky${variant})"/>
+    <circle cx="320" cy="60" r="30" fill="#f3e7c9" opacity=".7"/>
+    <path d="M0 200 Q100 170 200 190 T400 185 V267 H0 Z" fill="#8aa78e" opacity=".55"/>
+    <path d="M0 220 Q120 200 230 215 T400 210 V267 H0 Z" fill="#6f9079" opacity=".65"/>
+    ${variantShape(variant)}
+    <g opacity=".8">
+      <rect x="40" y="235" width="4" height="22" fill="#4b6b52"/><circle cx="42" cy="228" r="12" fill="#5c8064"/>
+      <rect x="356" y="238" width="4" height="19" fill="#4b6b52"/><circle cx="358" cy="232" r="10" fill="#5c8064"/>
+    </g>
+  </svg>`;
+}
+function variantShape(v){
+  switch(v){
+    case 'b': // tiny on wheels
+      return `<g><rect x="120" y="150" width="160" height="70" rx="4" fill="#8a5a33"/><rect x="120" y="150" width="160" height="70" rx="4" fill="#b5713b" opacity=".55"/><path d="M118 150 L200 110 L282 150 Z" fill="#2e4e3b"/><rect x="150" y="168" width="30" height="30" fill="#cfe0e4"/><rect x="210" y="168" width="38" height="52" fill="#3a5a44"/><circle cx="150" cy="226" r="13" fill="#2b2b2b"/><circle cx="250" cy="226" r="13" fill="#2b2b2b"/><circle cx="150" cy="226" r="5" fill="#777"/><circle cx="250" cy="226" r="5" fill="#777"/></g>`;
+    case 'c': // floating
+      return `<g><path d="M70 215 Q200 235 330 215 L330 240 Q200 260 70 240 Z" fill="#7a94b0"/><rect x="110" y="150" width="180" height="68" rx="3" fill="#c9a876"/><rect x="110" y="150" width="180" height="68" rx="3" fill="#b5713b" opacity=".4"/><rect x="110" y="140" width="180" height="14" fill="#2e4e3b"/><rect x="140" y="166" width="40" height="40" fill="#cfe0e4"/><rect x="215" y="162" width="42" height="56" fill="#3a5a44"/></g><path d="M70 240 Q200 258 330 240" stroke="#5f7d9c" stroke-width="3" fill="none" opacity=".6"/>`;
+    case 'd': // sauna barrel
+      return `<g><ellipse cx="200" cy="185" rx="105" ry="62" fill="#b5713b"/><ellipse cx="200" cy="185" rx="105" ry="62" fill="none" stroke="#8a5a33" stroke-width="3"/><ellipse cx="200" cy="185" rx="72" ry="44" fill="#c9a876"/><ellipse cx="200" cy="185" rx="44" ry="30" fill="#2e4e3b"/><ellipse cx="200" cy="185" rx="26" ry="18" fill="#cfe0e4" opacity=".7"/><rect x="150" y="225" width="100" height="14" rx="4" fill="#6b4a2a"/></g>`;
+    case 'e': // house kit / frame
+      return `<g stroke="#8a5a33" stroke-width="5" fill="none"><path d="M110 220 V140 L200 95 L290 140 V220"/><path d="M110 140 L200 95 L290 140"/><line x1="150" y1="220" x2="150" y2="150"/><line x1="200" y1="220" x2="200" y2="118"/><line x1="250" y1="220" x2="250" y2="150"/><line x1="110" y1="180" x2="290" y2="180"/></g><path d="M110 140 L200 95 L290 140" fill="#2e4e3b" opacity=".25"/>`;
+    case 'f': // family house (big)
+      return `<g><rect x="90" y="140" width="130" height="80" fill="#e5d7bf"/><rect x="90" y="140" width="130" height="80" fill="#b5713b" opacity=".2"/><path d="M84 140 L155 92 L226 140 Z" fill="#2e4e3b"/><rect x="210" y="160" width="105" height="60" fill="#d8c7a8"/><path d="M205 160 L262 128 L320 160 Z" fill="#3a5a44"/><rect x="110" y="165" width="34" height="34" fill="#cfe0e4"/><rect x="165" y="170" width="34" height="50" fill="#3a5a44"/><rect x="232" y="178" width="28" height="28" fill="#cfe0e4"/><rect x="275" y="180" width="26" height="40" fill="#4b6b52"/></g>`;
+    default: // a - standard tiny
+      return `<g><rect x="130" y="150" width="140" height="70" fill="#e5d7bf"/><rect x="130" y="150" width="140" height="70" fill="#b5713b" opacity=".22"/><path d="M122 150 L200 100 L278 150 Z" fill="#2e4e3b"/><rect x="152" y="170" width="36" height="36" fill="#cfe0e4"/><rect x="214" y="166" width="38" height="54" fill="#3a5a44"/><circle cx="247" cy="193" r="2.5" fill="#e9b588"/></g>`;
+  }
+}
+
+/* ---------- ICON helpers ---------- */
+const ic={
+  check:`<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#dce7dd"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#2e4e3b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  leaf:`<svg viewBox="0 0 24 24" fill="none"><path d="M4 20c0-9 7-16 16-16 0 9-7 16-16 16Z" stroke="#2e4e3b" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 20C8 14 12 11 18 8" stroke="#2e4e3b" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  bolt:`<svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke="#2e4e3b" stroke-width="1.8" stroke-linejoin="round"/></svg>`,
+  shield:`<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3Z" stroke="#2e4e3b" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12l2.3 2.3L16 9.5" stroke="#2e4e3b" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  ruler:`<svg viewBox="0 0 24 24" fill="none"><path d="M3 8h18v8H3zM7 8v3M11 8v4M15 8v3M19 8v4" stroke="#2e4e3b" stroke-width="1.8" stroke-linecap="round"/></svg>`
+};
+
+/* ---------- DATA MODEL ---------- */
+/* Prices only where the current site states them; otherwise "request". */
+const CATS=[
+  {id:"tiny-houses",art:"a",priceFrom:30000,
+   name:{lv:"Mazās mājas",en:"Tiny Houses",nl:"Tiny Houses"},
+   blurb:{lv:"Mājas ar pilnu apdari līdz 25 m², uzstādītas uz gatava pamata.",en:"Turnkey houses up to 25 m², installed on ready-made foundations.",nl:"Instapklare huizen tot 25 m², geplaatst op kant-en-klare funderingen."}},
+  {id:"houses-on-wheels",art:"b",priceFrom:null,
+   name:{lv:"Mājas uz riteņiem",en:"Houses on Wheels",nl:"Huizen op Wielen"},
+   blurb:{lv:"Mobilā mazmāja — brīvība un komforts jebkurā vietā.",en:"A mobile tiny home — freedom and comfort wherever you go.",nl:"Een mobiel tiny house — vrijheid en comfort waar je ook bent."}},
+  {id:"floating-houses",art:"c",priceFrom:60000,
+   name:{lv:"Peldošās mājas",en:"Floating Houses",nl:"Drijvende Huizen"},
+   blurb:{lv:"Mājas no 25 līdz 80 m² uz pontonu konstrukcijas.",en:"Houses from 25 to 80 m² on pontoon structures.",nl:"Huizen van 25 tot 80 m² op pontonconstructies."}},
+  {id:"family-houses",art:"f",priceFrom:null,
+   name:{lv:"Ģimenes mājas",en:"Family Houses",nl:"Gezinswoningen"},
+   blurb:{lv:"Pilnvērtīgas mājas no 150 līdz 300 m², arī ECO Line sērija.",en:"Full-size homes from 150 to 300 m², including the ECO Line series.",nl:"Volwaardige woningen van 150 tot 300 m², inclusief de ECO Line-serie."}},
+  {id:"house-kits",art:"e",priceFrom:null,
+   name:{lv:"Māju komplekti",en:"House Kits",nl:"Bouwpakketten"},
+   blurb:{lv:"Numurētas un sazāģētas karkasa daļas vieglai montāžai uz vietas.",en:"Numbered, pre-cut frame parts for easy on-site assembly.",nl:"Genummerde, voorgezaagde frameonderdelen voor eenvoudige montage."}},
+  {id:"barrel-saunas",art:"d",priceFrom:null,
+   name:{lv:"Mucu pirtis",en:"Barrel Saunas",nl:"Vatsauna's"},
+   blurb:{lv:"Augstas kvalitātes mucu pirtis dārzam, ar 8 mm rūdīta stikla durvīm.",en:"High-quality barrel saunas for the backyard, with 8 mm tempered glass doors.",nl:"Hoogwaardige vatsauna's voor de tuin, met deuren van 8 mm gehard glas."}}
+];
+
+const PRODUCTS=[
+  /* tiny houses */
+  {id:"nest-18",cat:"tiny-houses",art:"a",area:"18 m²",rooms:1,price:30000,
+   name:{lv:"Nest 18",en:"Nest 18",nl:"Nest 18"},
+   desc:{lv:"Kompakta māja ar pilnu apdari — ideāls dārza studija vai viesu nams.",en:"A compact turnkey cabin — ideal as a garden studio or guest house.",nl:"Een compacte instapklare cabine — ideaal als tuinstudio of gastenverblijf."}},
+  {id:"nest-25",cat:"tiny-houses",art:"a",area:"25 m²",rooms:1,price:38000,
+   name:{lv:"Nest 25",en:"Nest 25",nl:"Nest 25"},
+   desc:{lv:"Lielākā mazmājas versija ar guļamzonu, virtuvi un dušu.",en:"The larger tiny model with a sleeping area, kitchen and shower.",nl:"Het grotere tiny model met slaapzone, keuken en douche."}},
+  {id:"nest-studio",cat:"tiny-houses",art:"a",area:"20 m²",rooms:1,price:null,
+   name:{lv:"Nest Studio",en:"Nest Studio",nl:"Nest Studio"},
+   desc:{lv:"Individuāls projekts pēc jūsu vēlmēm uz gatava pamata.",en:"A custom project built to your wishes on a prepared foundation.",nl:"Een maatwerkproject naar jouw wensen op een voorbereide fundering."}},
+  /* on wheels */
+  {id:"roamer-15",cat:"houses-on-wheels",art:"b",area:"15 m²",rooms:1,price:null,
+   name:{lv:"Roamer 15",en:"Roamer 15",nl:"Roamer 15"},
+   desc:{lv:"Pilnībā aprīkota mobilā māja uz piekabes — gatava ceļam.",en:"A fully equipped mobile home on a trailer — ready for the road.",nl:"Een volledig uitgerust mobiel huis op een trailer — klaar voor onderweg."}},
+  {id:"roamer-20",cat:"houses-on-wheels",art:"b",area:"20 m²",rooms:2,price:null,
+   name:{lv:"Roamer 20",en:"Roamer 20",nl:"Roamer 20"},
+   desc:{lv:"Plašāks plānojums ar atsevišķu guļamvietu un pilnu virtuvi.",en:"A roomier layout with a separate sleeping loft and full kitchen.",nl:"Een ruimere indeling met aparte slaapvide en volledige keuken."}},
+  /* floating */
+  {id:"wave-40",cat:"floating-houses",art:"c",area:"40 m²",rooms:2,price:60000,
+   name:{lv:"Wave 40",en:"Wave 40",nl:"Wave 40"},
+   desc:{lv:"Peldoša māja uz pontoniem — lielisks risinājums atpūtai pie ūdens.",en:"A pontoon-mounted floating house — perfect for secluded waterside relaxation.",nl:"Een drijvend huis op pontons — perfect voor rustig verblijf aan het water."}},
+  {id:"wave-70",cat:"floating-houses",art:"c",area:"70 m²",rooms:3,price:null,
+   name:{lv:"Wave 70",en:"Wave 70",nl:"Wave 70"},
+   desc:{lv:"Lielāka peldošā māja ar terasi — mājai vai mājas birojam.",en:"A larger floating home with a terrace — for living or a home office.",nl:"Een groter drijvend huis met terras — om te wonen of als thuiskantoor."}},
+  /* family */
+  {id:"eco-line",cat:"family-houses",art:"f",area:"120 m²",rooms:3,price:null,
+   name:{lv:"ECO Line",en:"ECO Line",nl:"ECO Line"},
+   desc:{lv:"Sērijveida energoefektīva ģimenes māja ar optimizētām izmaksām.",en:"A series energy-efficient family house with optimised costs.",nl:"Een energiezuinige gezinswoning uit de serie met geoptimaliseerde kosten."}},
+  {id:"family-150",cat:"family-houses",art:"f",area:"150 m²",rooms:4,price:null,
+   name:{lv:"Family 150",en:"Family 150",nl:"Family 150"},
+   desc:{lv:"Pilnvērtīga ģimenes māja ap 150 m² — A energoefektivitātes klase.",en:"A full family home around 150 m² — energy efficiency class A.",nl:"Een volwaardige gezinswoning rond 150 m² — energieklasse A."}},
+  {id:"family-220",cat:"family-houses",art:"f",area:"220 m²",rooms:5,price:null,
+   name:{lv:"Family 220",en:"Family 220",nl:"Family 220"},
+   desc:{lv:"Plaša māja 200–250 m² ar individuālu arhitektūras projektu.",en:"A spacious 200–250 m² home with an individual architectural design.",nl:"Een ruime woning van 200–250 m² met een individueel architectuurontwerp."}},
+  /* kits */
+  {id:"kit-standard",cat:"house-kits",art:"e",area:"25–300 m²",rooms:null,price:null,
+   name:{lv:"Karkasa komplekts",en:"Frame Kit",nl:"Framepakket"},
+   desc:{lv:"Numurētas karkasa daļas un materiāli ar montāžas instrukciju.",en:"Numbered frame parts and materials with assembly instructions.",nl:"Genummerde frameonderdelen en materialen met montage-instructies."}},
+  /* saunas */
+  {id:"sauna-s",cat:"barrel-saunas",art:"d",area:"Ø 2.0 m",rooms:null,price:null,
+   name:{lv:"Mucu pirts S",en:"Barrel Sauna S",nl:"Vatsauna S"},
+   desc:{lv:"Kompakta mucu pirts ar 8 mm rūdīta stikla durvīm.",en:"Compact barrel sauna with an 8 mm tempered glass door.",nl:"Compacte vatsauna met een deur van 8 mm gehard glas."}},
+  {id:"sauna-l",cat:"barrel-saunas",art:"d",area:"Ø 2.4 m",rooms:null,price:null,
+   name:{lv:"Mucu pirts L",en:"Barrel Sauna L",nl:"Vatsauna L"},
+   desc:{lv:"Lielāka pirts ar atpūtas zonu un priekštelpu.",en:"A larger sauna with a relaxation area and porch.",nl:"Een grotere sauna met ontspanningsruimte en voorportaal."}}
+];
+
+/* ---------- i18n STRINGS ---------- */
+const I={
+  lv:{
+    brandsub:"Eco House", navHome:"Sākums", navProducts:"Produkti", navAbout:"Par mums", navContact:"Kontakti",
+    heroEyebrow:"Eiropas ražotājs", heroTitle:"Energoefektīvas koka karkasa mājas, radītas uz mūžu",
+    heroLead:"Grata Eco House ražo ekoloģiskas, siltas un izturīgas koka karkasa mājas — no mazmājām līdz pilnvērtīgām ģimenes mājām.",
+    heroCta1:"Saņemt piedāvājumu", heroCta2:"Apskatīt produktus",
+    t1:"Augsta kvalitāte", t2:"Videi draudzīgi", t3:"Energoefektīvi", t4:"Individuāls dizains", t5:"10 gadu garantija",
+    featEyebrow:"Kāpēc Grata", featTitle:"Mājas, kas maksā mazāk siltumā un vairāk komfortā",
+    f1t:"Ekoloģiski", f1p:"Dabīgi, sertificēti materiāli bez kaitīgām ķīmiskām vielām.",
+    f2t:"Energoefektīvi", f2p:"A klases siltumizolācija — zemāki rēķini par apkuri.",
+    f3t:"Ātra būvniecība", f3p:"Rūpnīcā izgatavoti elementi, montāža jebkurā sezonā.",
+    f4t:"10 gadu garantija", f4p:"Pārbaudīta tehnoloģija ar trīskāršu kvalitātes kontroli.",
+    catEyebrow:"Mūsu produkti", catTitle:"Izvēlieties savu māju",
+    catLead:"No kompaktām mazmājām līdz plašām ģimenes mājām — katram risinājumam individuāla pieeja.",
+    prodEyebrow:"Modeļi", explore:"Apskatīt", from:"No", reqPrice:"Pieprasīt cenu", perModel:"par modeli",
+    all:"Visi produkti", viewCat:"Skatīt kategoriju", relcat:"Šajā kategorijā",
+    specArea:"Platība", specRooms:"Telpas", specWarranty:"Garantija", specClass:"Energoklase", years:"10 gadi",
+    pdInquire:"Pieteikties šim modelim", pdFeatures:"Kas iekļauts", backTo:"Atpakaļ uz",
+    feat1:"Pilna rūpnīcas apdare un trīskārša kvalitātes kontrole",
+    feat2:"A klases siltumizolācija un energoefektīvi logi",
+    feat3:"Individuāls projekts pēc jūsu vēlmēm",
+    feat4:"Montāža jebkurā sezonā un laikapstākļos",
+    formEyebrow:"Bezmaksas konsultācija", formTitle:"Saņemiet piedāvājumu 24 stundu laikā",
+    formLead:"Atstājiet savu kontaktinformāciju — mēs sagatavosim individuālu piedāvājumu jūsu projektam.",
+    fName:"Vārds, uzvārds", fEmail:"E-pasts", fPhone:"Tālrunis", fCountry:"Valsts",
+    fInterest:"Interesējošais produkts", fMsg:"Jūsu ziņa", fMsgPh:"Pastāstiet par savu projektu, platību, termiņiem…",
+    fConsent:"Piekrītu, ka mani dati tiek apstrādāti, lai sazinātos ar mani.",
+    fSubmit:"Nosūtīt pieteikumu", fChoose:"Izvēlieties…", fOptional:"neobligāti",
+    okTitle:"Paldies! Pieteikums saņemts.", okMsg:"Mēs sazināsimies ar jums tuvāko 24 stundu laikā.",
+    ctaTitle:"Gatavs sākt savu projektu?", ctaLead:"Pastāstiet mums par savu ieceri — bezmaksas konsultācija un individuāls piedāvājums.",
+    ctaBtn:"Saņemt piedāvājumu",
+    aboutEyebrow:"Par Grata Eco House", aboutTitle:"Māja kā ieguldījums nākotnē",
+    aboutP1:"Mēs ņemam vērā katra pasūtījuma īpatnības — klienta vēlmes, vietējos būvnormatīvus, kā arī energoefektivitātes un vides prasības. Visas mūsu mājas atbilst A energoefektivitātes klasei vai pat pārsniedz to.",
+    aboutP2:"Augstas kvalitātes inženiertehniskie risinājumi un energoefektīva pieeja ļauj mūsu klientiem izvairīties no nepamatoti augstiem apkures rēķiniem un dzīvot ēkā ar labu iekšējo mikroklimatu.",
+    aConceptTitle:"Energoefektivitātes koncepts balstās uz trim elementiem:",
+    aC1:"Aukstumizturīgas ārējās koka sienas", aC2:"Optimāla jumta siltumizolācija", aC3:"Logi ar uzlabotu siltumizolāciju",
+    aAdvTitle:"Mūsu priekšrocības",
+    aA1:"Projektēšanu veic vadošie arhitekti un kvalificēti inženieri",
+    aA2:"Visus procesus uzrauga pieredzējuši projektu vadītāji",
+    aA3:"Izmantojam tikai sertificētus materiālus",
+    aA4:"Elementi tiek ražoti uz augsto tehnoloģiju līnijas ar trīskāršu kontroli",
+    contactEyebrow:"Sazinieties ar mums", contactTitle:"Parunāsim par jūsu māju",
+    contactLead:"Jautājumi par modeļiem, cenām vai piegādi? Rakstiet mums — atbildam latviešu, angļu un nīderlandiešu valodā.",
+    rights:"Visas tiesības aizsargātas.", builtWith:"Koka karkasa mājas · Energoklase A",
+    footTag:"Eiropas energoefektīvu koka karkasa māju ražotājs.", footProducts:"Produkti", footCompany:"Uzņēmums", footContact:"Kontakti",
+    countryLine:"Latvija · Eiropas Savienība"
+  },
+  en:{
+    brandsub:"Eco House", navHome:"Home", navProducts:"Products", navAbout:"About", navContact:"Contact",
+    heroEyebrow:"European manufacturer", heroTitle:"Energy-efficient timber frame houses, built to last",
+    heroLead:"Grata Eco House builds ecological, warm and durable timber frame houses — from tiny homes to full-size family houses.",
+    heroCta1:"Get a quote", heroCta2:"Explore products",
+    t1:"High quality", t2:"Eco friendly", t3:"Energy efficient", t4:"Individual design", t5:"10-year warranty",
+    featEyebrow:"Why Grata", featTitle:"Houses that cost less in heating and more in comfort",
+    f1t:"Ecological", f1p:"Natural, certified materials free of harmful chemicals.",
+    f2t:"Energy efficient", f2p:"Class A thermal insulation — lower heating bills.",
+    f3t:"Fast to build", f3p:"Factory-made elements, assembly in any season.",
+    f4t:"10-year warranty", f4p:"Proven technology with triple quality control.",
+    catEyebrow:"Our products", catTitle:"Choose your house",
+    catLead:"From compact tiny homes to spacious family houses — an individual approach to every solution.",
+    prodEyebrow:"Models", explore:"Explore", from:"From", reqPrice:"Request price", perModel:"per model",
+    all:"All products", viewCat:"View category", relcat:"In this category",
+    specArea:"Area", specRooms:"Rooms", specWarranty:"Warranty", specClass:"Energy class", years:"10 years",
+    pdInquire:"Apply for this model", pdFeatures:"What's included", backTo:"Back to",
+    feat1:"Full factory finish and triple quality control",
+    feat2:"Class A thermal insulation and energy-efficient windows",
+    feat3:"Custom project tailored to your wishes",
+    feat4:"Assembly in any season and weather",
+    formEyebrow:"Free consultation", formTitle:"Get your quote within 24 hours",
+    formLead:"Leave your contact details — we'll prepare an individual offer for your project.",
+    fName:"Full name", fEmail:"Email", fPhone:"Phone", fCountry:"Country",
+    fInterest:"Product of interest", fMsg:"Your message", fMsgPh:"Tell us about your project, size, timeline…",
+    fConsent:"I agree that my data may be processed so you can contact me.",
+    fSubmit:"Send inquiry", fChoose:"Choose…", fOptional:"optional",
+    okTitle:"Thank you! Inquiry received.", okMsg:"We'll get back to you within 24 hours.",
+    ctaTitle:"Ready to start your project?", ctaLead:"Tell us about your idea — free consultation and an individual offer.",
+    ctaBtn:"Get a quote",
+    aboutEyebrow:"About Grata Eco House", aboutTitle:"A house as an investment in your future",
+    aboutP1:"We consider the peculiarities of each order — the customer's wishes, local building standards, and energy and environmental requirements. All of our houses meet energy efficiency class A requirements or even surpass them.",
+    aboutP2:"High-quality engineering solutions and an energy-efficient approach let our customers avoid unreasonably high heating bills and live in a building with a healthy indoor climate.",
+    aConceptTitle:"The energy efficiency concept rests on three elements:",
+    aC1:"Cold-proof external timber walls", aC2:"Optimal roof thermal insulation", aC3:"Windows with enhanced thermal insulation",
+    aAdvTitle:"Our advantages",
+    aA1:"Design led by leading architects and qualified engineers",
+    aA2:"All processes supervised by experienced project managers",
+    aA3:"Only certified materials used in production",
+    aA4:"Elements made on a high-tech line with triple control",
+    contactEyebrow:"Get in touch", contactTitle:"Let's talk about your house",
+    contactLead:"Questions about models, prices or delivery? Write to us — we reply in Latvian, English and Dutch.",
+    rights:"All rights reserved.", builtWith:"Timber frame houses · Energy class A",
+    footTag:"European manufacturer of energy-efficient timber frame houses.", footProducts:"Products", footCompany:"Company", footContact:"Contact",
+    countryLine:"Latvia · European Union"
+  },
+  nl:{
+    brandsub:"Eco House", navHome:"Home", navProducts:"Producten", navAbout:"Over ons", navContact:"Contact",
+    heroEyebrow:"Europese fabrikant", heroTitle:"Energiezuinige houtskeletwoningen, gebouwd voor de lange termijn",
+    heroLead:"Grata Eco House bouwt ecologische, warme en duurzame houtskeletwoningen — van tiny houses tot volwaardige gezinswoningen.",
+    heroCta1:"Vraag een offerte", heroCta2:"Bekijk producten",
+    t1:"Hoge kwaliteit", t2:"Milieuvriendelijk", t3:"Energiezuinig", t4:"Individueel ontwerp", t5:"10 jaar garantie",
+    featEyebrow:"Waarom Grata", featTitle:"Woningen die minder kosten aan verwarming en meer bieden aan comfort",
+    f1t:"Ecologisch", f1p:"Natuurlijke, gecertificeerde materialen zonder schadelijke chemicaliën.",
+    f2t:"Energiezuinig", f2p:"Klasse A isolatie — lagere stookkosten.",
+    f3t:"Snel te bouwen", f3p:"Fabrieksgemaakte elementen, montage in elk seizoen.",
+    f4t:"10 jaar garantie", f4p:"Beproefde technologie met drievoudige kwaliteitscontrole.",
+    catEyebrow:"Onze producten", catTitle:"Kies uw woning",
+    catLead:"Van compacte tiny houses tot ruime gezinswoningen — een individuele aanpak voor elke oplossing.",
+    prodEyebrow:"Modellen", explore:"Bekijken", from:"Vanaf", reqPrice:"Vraag prijs op", perModel:"per model",
+    all:"Alle producten", viewCat:"Bekijk categorie", relcat:"In deze categorie",
+    specArea:"Oppervlakte", specRooms:"Kamers", specWarranty:"Garantie", specClass:"Energieklasse", years:"10 jaar",
+    pdInquire:"Vraag dit model aan", pdFeatures:"Wat is inbegrepen", backTo:"Terug naar",
+    feat1:"Volledige fabrieksafwerking en drievoudige kwaliteitscontrole",
+    feat2:"Klasse A isolatie en energiezuinige ramen",
+    feat3:"Maatwerkproject afgestemd op uw wensen",
+    feat4:"Montage in elk seizoen en weer",
+    formEyebrow:"Gratis advies", formTitle:"Ontvang uw offerte binnen 24 uur",
+    formLead:"Laat uw gegevens achter — wij stellen een persoonlijke offerte voor uw project op.",
+    fName:"Volledige naam", fEmail:"E-mail", fPhone:"Telefoon", fCountry:"Land",
+    fInterest:"Product van interesse", fMsg:"Uw bericht", fMsgPh:"Vertel ons over uw project, oppervlakte, planning…",
+    fConsent:"Ik ga ermee akkoord dat mijn gegevens worden verwerkt zodat u contact met mij kunt opnemen.",
+    fSubmit:"Verstuur aanvraag", fChoose:"Kies…", fOptional:"optioneel",
+    okTitle:"Bedankt! Aanvraag ontvangen.", okMsg:"We nemen binnen 24 uur contact met u op.",
+    ctaTitle:"Klaar om uw project te starten?", ctaLead:"Vertel ons over uw idee — gratis advies en een persoonlijke offerte.",
+    ctaBtn:"Vraag een offerte",
+    aboutEyebrow:"Over Grata Eco House", aboutTitle:"Een huis als investering in uw toekomst",
+    aboutP1:"We houden rekening met de bijzonderheden van elke opdracht — de wensen van de klant, lokale bouwnormen en eisen op het gebied van energie en milieu. Al onze woningen voldoen aan energieklasse A of overtreffen deze zelfs.",
+    aboutP2:"Hoogwaardige technische oplossingen en een energiezuinige aanpak zorgen ervoor dat onze klanten onnodig hoge stookkosten vermijden en in een gebouw met een gezond binnenklimaat wonen.",
+    aConceptTitle:"Het energiezuinigheidsconcept rust op drie elementen:",
+    aC1:"Koudebestendige buitenwanden van hout", aC2:"Optimale dakisolatie", aC3:"Ramen met verbeterde isolatie",
+    aAdvTitle:"Onze voordelen",
+    aA1:"Ontwerp door toonaangevende architecten en gekwalificeerde ingenieurs",
+    aA2:"Alle processen begeleid door ervaren projectmanagers",
+    aA3:"Alleen gecertificeerde materialen in productie",
+    aA4:"Elementen gemaakt op een hightech lijn met drievoudige controle",
+    contactEyebrow:"Neem contact op", contactTitle:"Laten we over uw woning praten",
+    contactLead:"Vragen over modellen, prijzen of levering? Schrijf ons — wij antwoorden in het Lets, Engels en Nederlands.",
+    rights:"Alle rechten voorbehouden.", builtWith:"Houtskeletwoningen · Energieklasse A",
+    footTag:"Europese fabrikant van energiezuinige houtskeletwoningen.", footProducts:"Producten", footCompany:"Bedrijf", footContact:"Contact",
+    countryLine:"Letland · Europese Unie"
+  }
+};
+
+/* ---------- STATE ---------- */
+let LANG = localStorage.getItem('grata_lang') || 'lv';
+if(!I[LANG]) LANG='lv';
+
+function t(k){return (I[LANG]&&I[LANG][k])||k;}
+function nm(obj){return obj[LANG]||obj.en;}
+function euro(n){return "€"+n.toLocaleString('lv-LV').replace(/,/g,' ');}
+
+/* ---------- ROUTER ---------- */
+function parseHash(){
+  const h=location.hash.replace(/^#\/?/,'');
+  const parts=h.split('/').filter(Boolean);
+  if(parts.length===0) return {view:'home'};
+  if(parts[0]==='products') return {view:'products'};
+  if(parts[0]==='about') return {view:'about'};
+  if(parts[0]==='contact') return {view:'contact'};
+  if(parts[0]==='category') return {view:'category',id:parts[1]};
+  if(parts[0]==='product') return {view:'product',id:parts[1]};
+  return {view:'home'};
+}
+function go(path){
+  if(path==='home') location.hash='#/';
+  else if(path==='products') location.hash='#/products';
+  else if(path==='about') location.hash='#/about';
+  else if(path==='contact') location.hash='#/contact';
+  else location.hash='#/'+path;
+  closeMenu();
+}
+function goCat(id){location.hash='#/category/'+id;closeMenu();}
+function goProd(id){location.hash='#/product/'+id;closeMenu();}
+
+/* ---------- RENDER HELPERS ---------- */
+function ticksRow(){
+  return `<div class="ticks">${['t1','t2','t3','t4','t5'].map(k=>
+    `<span class="tick">${ic.check}${t(k)}</span>`).join('')}</div>`;
+}
+function catCard(c){
+  const price = c.priceFrom
+    ? `<div class="price">${euro(c.priceFrom)}<small>${t('from')}</small></div>`
+    : `<div class="price" style="font-size:.9rem">${t('reqPrice')}</div>`;
+  return `<div class="card" onclick="goCat('${c.id}')">
+    <div class="thumb">${houseArt(c.art)}</div>
+    <div class="body">
+      <div class="tag">${t('prodEyebrow')}</div>
+      <h3>${nm(c.name)}</h3>
+      <p>${nm(c.blurb)}</p>
+      <div class="foot">${price}<span class="arrow">→</span></div>
+    </div>
+  </div>`;
+}
+function prodCard(p){
+  const price = p.price
+    ? `<div class="price">${euro(p.price)}<small>${t('from')}</small></div>`
+    : `<div class="price" style="font-size:.9rem">${t('reqPrice')}</div>`;
+  const meta=[`<span class="chip">${p.area}</span>`];
+  if(p.rooms) meta.push(`<span class="chip">${p.rooms} ${t('specRooms').toLowerCase()}</span>`);
+  return `<div class="card" onclick="goProd('${p.id}')">
+    <div class="thumb">${houseArt(p.art)}</div>
+    <div class="body">
+      <div class="tag">${nm(CATS.find(c=>c.id===p.cat).name)}</div>
+      <h3>${nm(p.name)}</h3>
+      <p>${nm(p.desc)}</p>
+      <div class="meta">${meta.join('')}</div>
+      <div class="foot">${price}<span class="arrow">→</span></div>
+    </div>
+  </div>`;
+}
+
+/* ---------- INQUIRY FORM (on every page) ---------- */
+function formBlock(prefill){
+  const opts = CATS.map(c=>`<option value="${nm(c.name)}" ${prefill===nm(c.name)?'selected':''}>${nm(c.name)}</option>`).join('');
+  const prodOpts = PRODUCTS.map(p=>`<option value="${nm(p.name)} — ${nm(CATS.find(c=>c.id===p.cat).name)}" ${prefill===nm(p.name)?'selected':''}>${nm(p.name)} — ${nm(CATS.find(c=>c.id===p.cat).name)}</option>`).join('');
+  return `<section class="block bg-paper form-section" id="inquiry">
+    <div class="wrap">
+      <div class="form-card inline">
+        <div class="form-head">
+          <div class="eyebrow">${t('formEyebrow')}</div>
+          <h3>${t('formTitle')}</h3>
+          <p>${t('formLead')}</p>
+        </div>
+        <form onsubmit="return submitForm(event)">
+          <div class="fgrid">
+            <div class="field"><label>${t('fName')} <span class="req">*</span></label><input name="name" required></div>
+            <div class="field"><label>${t('fEmail')} <span class="req">*</span></label><input type="email" name="email" required></div>
+            <div class="field"><label>${t('fPhone')} <span class="req">*</span></label><input name="phone" required></div>
+            <div class="field"><label>${t('fCountry')} <span style="color:var(--muted);font-weight:500">(${t('fOptional')})</span></label><input name="country"></div>
+          </div>
+          <div class="field full">
+            <label>${t('fInterest')}</label>
+            <select name="interest">
+              <optgroup label="${t('all')}">${opts}</optgroup>
+              <optgroup label="${t('prodEyebrow')}">${prodOpts}</optgroup>
+            </select>
+          </div>
+          <div class="field full"><label>${t('fMsg')}</label><textarea name="message" placeholder="${t('fMsgPh')}"></textarea></div>
+          <label class="consent"><input type="checkbox" required><span>${t('fConsent')}</span></label>
+          <button type="submit" class="btn btn-primary">${t('fSubmit')} →</button>
+        </form>
+        <div class="form-ok">
+          <div class="big">${ic.check}</div>
+          <h3>${t('okTitle')}</h3>
+          <p>${t('okMsg')}</p>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function submitForm(e){
+  e.preventDefault();
+  /* ===== WIRE YOUR BACKEND HERE =====================================
+     Replace the block below with a real submission, e.g.:
+       fetch('https://formspree.io/f/XXXX', {method:'POST', body:new FormData(e.target)})
+     or your own endpoint / a Facebook Lead Ads webhook.
+     For the ad test you can also fire a Meta Pixel 'Lead' event here:
+       if(window.fbq) fbq('track','Lead');
+  =================================================================== */
+  const card=e.target.closest('.form-card');
+  e.target.style.display='none';
+  card.querySelector('.form-ok').style.display='block';
+  card.scrollIntoView({behavior:'smooth',block:'center'});
+  return false;
+}
+
+/* ---------- VIEWS ---------- */
+function viewHome(){
+  return `
+  <section class="hero"><div class="hero-blob"></div>
+    <div class="wrap"><div class="hero-grid">
+      <div>
+        <div class="eyebrow">${t('heroEyebrow')}</div>
+        <h1>${t('heroTitle')}</h1>
+        <p class="lead">${t('heroLead')}</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" onclick="scrollForm()">${t('heroCta1')} →</a>
+          <a class="btn btn-ghost" onclick="go('products')">${t('heroCta2')}</a>
+        </div>
+        ${ticksRow()}
+      </div>
+      <div class="hero-art">${houseArt('f')}</div>
+    </div></div>
+  </section>
+
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${t('featEyebrow')}</div><h2>${t('featTitle')}</h2></div>
+    <div class="features">
+      <div class="feature"><div class="ic">${ic.leaf}</div><h4>${t('f1t')}</h4><p>${t('f1p')}</p></div>
+      <div class="feature"><div class="ic">${ic.bolt}</div><h4>${t('f2t')}</h4><p>${t('f2p')}</p></div>
+      <div class="feature"><div class="ic">${ic.ruler}</div><h4>${t('f3t')}</h4><p>${t('f3p')}</p></div>
+      <div class="feature"><div class="ic">${ic.shield}</div><h4>${t('f4t')}</h4><p>${t('f4p')}</p></div>
+    </div>
+  </div></section>
+
+  <section class="block bg-paper"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${t('catEyebrow')}</div><h2>${t('catTitle')}</h2><p>${t('catLead')}</p></div>
+    <div class="cards">${CATS.map(catCard).join('')}</div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="cta-band">
+      <h2>${t('ctaTitle')}</h2><p>${t('ctaLead')}</p>
+      <a class="btn btn-primary" onclick="scrollForm()">${t('ctaBtn')} →</a>
+    </div>
+  </div></section>
+
+  ${formBlock('')}`;
+}
+
+function viewProducts(){
+  return `
+  <div class="wrap"><div class="crumb"><a onclick="go('home')">${t('navHome')}</a><span class="sep">/</span><span>${t('navProducts')}</span></div></div>
+  <section class="block" style="padding-top:30px"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${t('catEyebrow')}</div><h2>${t('catTitle')}</h2><p>${t('catLead')}</p></div>
+    <div class="cards">${CATS.map(catCard).join('')}</div>
+  </div></section>
+  ${formBlock('')}`;
+}
+
+function viewCategory(id){
+  const c=CATS.find(x=>x.id===id);
+  if(!c) return viewProducts();
+  const prods=PRODUCTS.filter(p=>p.cat===id);
+  return `
+  <div class="wrap"><div class="crumb">
+    <a onclick="go('home')">${t('navHome')}</a><span class="sep">/</span>
+    <a onclick="go('products')">${t('navProducts')}</a><span class="sep">/</span><span>${nm(c.name)}</span>
+  </div></div>
+  <section class="block" style="padding-top:26px"><div class="wrap">
+    <div class="hero-grid" style="align-items:center">
+      <div>
+        <div class="eyebrow">${t('prodEyebrow')}</div>
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);color:var(--forest);line-height:1.1;font-weight:700">${nm(c.name)}</h2>
+        <p class="lead" style="margin-top:16px">${nm(c.blurb)}</p>
+        ${c.priceFrom?`<p style="font-family:var(--serif);font-size:1.3rem;color:var(--wood);font-weight:700;margin-top:8px">${t('from')} ${euro(c.priceFrom)}</p>`:''}
+        <div class="hero-cta" style="margin-top:22px"><a class="btn btn-primary" onclick="scrollForm()">${t('heroCta1')} →</a></div>
+      </div>
+      <div class="hero-art" style="aspect-ratio:4/3">${houseArt(c.art)}</div>
+    </div>
+  </div></section>
+  <section class="block bg-paper" style="padding-top:50px"><div class="wrap">
+    <div class="sec-head" style="margin-bottom:30px"><div class="eyebrow">${t('relcat')}</div><h2 style="font-size:1.8rem">${nm(c.name)}</h2></div>
+    <div class="cards">${prods.map(prodCard).join('')}</div>
+  </div></section>
+  ${formBlock(nm(c.name))}`;
+}
+
+function viewProduct(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p) return viewProducts();
+  const c=CATS.find(x=>x.id===p.cat);
+  const specs=[
+    {k:t('specArea'),v:p.area},
+    p.rooms?{k:t('specRooms'),v:p.rooms}:{k:t('specClass'),v:"A"},
+    {k:t('specWarranty'),v:t('years')},
+    {k:t('specClass'),v:"A"}
+  ].slice(0,4);
+  const priceHtml = p.price
+    ? `<div class="pb-price"><small>${t('from')}</small>${euro(p.price)}</div>`
+    : `<div class="pb-price" style="font-size:1.3rem"><small>&nbsp;</small>${t('reqPrice')}</div>`;
+  const related=PRODUCTS.filter(x=>x.cat===p.cat&&x.id!==p.id).slice(0,3);
+  return `
+  <div class="wrap"><div class="crumb">
+    <a onclick="go('home')">${t('navHome')}</a><span class="sep">/</span>
+    <a onclick="go('products')">${t('navProducts')}</a><span class="sep">/</span>
+    <a onclick="goCat('${c.id}')">${nm(c.name)}</a><span class="sep">/</span><span>${nm(p.name)}</span>
+  </div></div>
+  <section class="block" style="padding-top:26px"><div class="wrap">
+    <div class="pd">
+      <div class="pd-art">${houseArt(p.art)}</div>
+      <div>
+        <div class="eyebrow">${nm(c.name)}</div>
+        <h1>${nm(p.name)}</h1>
+        <p class="lead">${nm(p.desc)}</p>
+        <div class="specs">${specs.map(s=>`<div class="spec"><div class="k">${s.k}</div><div class="v">${s.v}</div></div>`).join('')}</div>
+        <div class="price-box">${priceHtml}<a class="btn btn-primary" onclick="scrollForm()">${t('pdInquire')} →</a></div>
+        <h3 style="font-family:var(--serif);color:var(--forest);font-size:1.2rem;margin-bottom:4px">${t('pdFeatures')}</h3>
+        <ul class="feat-list">
+          <li>${ic.check}${t('feat1')}</li>
+          <li>${ic.check}${t('feat2')}</li>
+          <li>${ic.check}${t('feat3')}</li>
+          <li>${ic.check}${t('feat4')}</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+  ${related.length?`<section class="block bg-paper"><div class="wrap">
+    <div class="sec-head" style="margin-bottom:28px"><div class="eyebrow">${t('relcat')}</div><h2 style="font-size:1.7rem">${nm(c.name)}</h2></div>
+    <div class="cards">${related.map(prodCard).join('')}</div>
+  </div></section>`:''}
+  ${formBlock(nm(p.name))}`;
+}
+
+function viewAbout(){
+  return `
+  <div class="wrap"><div class="crumb"><a onclick="go('home')">${t('navHome')}</a><span class="sep">/</span><span>${t('navAbout')}</span></div></div>
+  <section class="block" style="padding-top:26px"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${t('aboutEyebrow')}</div><h2>${t('aboutTitle')}</h2></div>
+    <div class="hero-grid" style="align-items:start">
+      <div>
+        <p style="font-size:1.05rem;color:var(--muted);margin-bottom:18px">${t('aboutP1')}</p>
+        <p style="font-size:1.05rem;color:var(--muted)">${t('aboutP2')}</p>
+        <h3 style="font-family:var(--serif);color:var(--forest);font-size:1.25rem;margin:28px 0 12px">${t('aConceptTitle')}</h3>
+        <ul class="feat-list"><li>${ic.check}${t('aC1')}</li><li>${ic.check}${t('aC2')}</li><li>${ic.check}${t('aC3')}</li></ul>
+      </div>
+      <div class="hero-art" style="aspect-ratio:4/5">${houseArt('e')}</div>
+    </div>
+  </div></section>
+  <section class="block bg-forest"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${t('aAdvTitle')}</div><h2>${t('aAdvTitle')}</h2></div>
+    <div class="cards two" style="gap:18px">
+      ${['aA1','aA2','aA3','aA4'].map(k=>`<div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px;display:flex;gap:12px;align-items:flex-start"><div style="width:26px;flex:none">${ic.check}</div><p style="color:#fff;font-size:.98rem">${t(k)}</p></div>`).join('')}
+    </div>
+  </div></section>
+  ${formBlock('')}`;
+}
+
+function viewContact(){
+  return `
+  <div class="wrap"><div class="crumb"><a onclick="go('home')">${t('navHome')}</a><span class="sep">/</span><span>${t('navContact')}</span></div></div>
+  <section class="block" style="padding-top:30px"><div class="wrap">
+    <div class="sec-head" style="text-align:center;margin:0 auto 10px"><div class="eyebrow" style="justify-content:center">${t('contactEyebrow')}</div><h2>${t('contactTitle')}</h2><p>${t('contactLead')}</p></div>
+  </div></section>
+  ${formBlock('')}`;
+}
+
+/* ---------- MAIN RENDER ---------- */
+function render(){
+  const r=parseHash();
+  const v=document.getElementById('view');
+  let html='';
+  if(r.view==='home') html=viewHome();
+  else if(r.view==='products') html=viewProducts();
+  else if(r.view==='category') html=viewCategory(r.id);
+  else if(r.view==='product') html=viewProduct(r.id);
+  else if(r.view==='about') html=viewAbout();
+  else if(r.view==='contact') html=viewContact();
+  else html=viewHome();
+  v.innerHTML=html;
+  window.scrollTo({top:0,behavior:'instant'});
+  updateChrome(r);
+}
+
+function updateChrome(r){
+  document.documentElement.lang=LANG;
+  // static data-i translations
+  document.querySelectorAll('[data-i]').forEach(el=>{el.textContent=t(el.getAttribute('data-i'));});
+  // lang buttons
+  document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.getAttribute('data-lang')===LANG));
+  // nav active
+  document.querySelectorAll('[data-nav]').forEach(a=>{
+    const n=a.getAttribute('data-nav');
+    a.classList.toggle('active',(n==='home'&&r.view==='home')||(n===r.view));
+  });
+  // footer categories
+  const fc=document.getElementById('footCats');
+  if(fc) fc.innerHTML=CATS.map(c=>`<li><a onclick="goCat('${c.id}')">${nm(c.name)}</a></li>`).join('');
+  const country=document.getElementById('footCountry');
+  if(country) country.textContent=t('countryLine');
+}
+
+/* ---------- INTERACTIONS ---------- */
+function setLang(l){LANG=l;localStorage.setItem('grata_lang',l);render();}
+function scrollForm(){const f=document.getElementById('inquiry');if(f)f.scrollIntoView({behavior:'smooth'});}
+function toggleMenu(){document.getElementById('mnav').classList.toggle('open');}
+function closeMenu(){document.getElementById('mnav').classList.remove('open');}
+
+window.addEventListener('hashchange',render);
+render();
+</script>
+</body>
+</html>
