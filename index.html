@@ -482,30 +482,49 @@ const CATS=[
 ];
 
 const PRODUCTS=[
-  /* tiny houses */
-  {id:"nest-18",cat:"tiny-houses",art:"a",area:"18 m²",rooms:1,price:30000,
-   name:{lv:"Nest 18",en:"Nest 18",nl:"Nest 18"},
-   desc:{lv:"Kompakta māja ar pilnu apdari — ideāls dārza studija vai viesu nams.",en:"A compact turnkey cabin — ideal as a garden studio or guest house.",nl:"Een compacte instapklare cabine — ideaal als tuinstudio of gastenverblijf."}},
-  {id:"nest-25",cat:"tiny-houses",art:"a",area:"25 m²",rooms:1,price:38000,
-   name:{lv:"Nest 25",en:"Nest 25",nl:"Nest 25"},
-   desc:{lv:"Lielākā mazmājas versija ar guļamzonu, virtuvi un dušu.",en:"The larger tiny model with a sleeping area, kitchen and shower.",nl:"Het grotere tiny model met slaapzone, keuken en douche."}},
-  {id:"nest-studio",cat:"tiny-houses",art:"a",area:"20 m²",rooms:1,price:null,
-   name:{lv:"Nest Studio",en:"Nest Studio",nl:"Nest Studio"},
-   desc:{lv:"Individuāls projekts pēc jūsu vēlmēm uz gatava pamata.",en:"A custom project built to your wishes on a prepared foundation.",nl:"Een maatwerkproject naar jouw wensen op een voorbereide fundering."}},
-  /* on wheels */
-  {id:"roamer-15",cat:"houses-on-wheels",art:"b",area:"15 m²",rooms:1,price:null,
-   name:{lv:"Roamer 15",en:"Roamer 15",nl:"Roamer 15"},
+  /* tiny houses — real Grata models, 25 m² turnkey, verified specs + prices */
+  {id:"tiny-1",cat:"tiny-houses",art:"a",area:"25 m²",rooms:2,price:29635,
+   specList:[{k:"living",v:"25 m²"},{k:"length",v:"4,0 m"},{k:"width",v:"6,25 m"},{k:"sleeps",v:"2"}],
+   name:{lv:"Tiny House 1",en:"Tiny House 1",nl:"Tiny House 1"},
+   desc:{lv:"Māja ar pilnu apdari uz gatava pamata — divas guļamvietas.",en:"Turnkey house on a ready-made foundation — two sleeping places.",nl:"Instapklaar huis op kant-en-klare fundering — twee slaapplaatsen."}},
+  {id:"tiny-2",cat:"tiny-houses",art:"a",area:"25 m²",rooms:2,price:29627,
+   specList:[{k:"living",v:"25 m²"},{k:"length",v:"4,0 m"},{k:"width",v:"6,25 m"},{k:"sleeps",v:"2"}],
+   name:{lv:"Tiny House 2",en:"Tiny House 2",nl:"Tiny House 2"},
+   desc:{lv:"Kompakta mazmāja ātrai un ekonomiskai dzīvošanai.",en:"A compact tiny home for fast, economical living.",nl:"Een compact tiny house voor snel en voordelig wonen."}},
+  {id:"tiny-3",cat:"tiny-houses",art:"a",area:"25 m²",rooms:2,price:31811,
+   specList:[{k:"living",v:"25 m²"},{k:"length",v:"4,0 m"},{k:"width",v:"6,25 m"},{k:"sleeps",v:"2"}],
+   name:{lv:"Tiny House 3",en:"Tiny House 3",nl:"Tiny House 3"},
+   desc:{lv:"Mazmāja ar uzlabotu apdari un plašāku dzīvojamo zonu.",en:"A tiny home with upgraded finish and a roomier living area.",nl:"Een tiny house met luxere afwerking en ruimere woonruimte."}},
+  {id:"tiny-4",cat:"tiny-houses",art:"a",area:"25 m²",rooms:2,price:30056,
+   specList:[{k:"living",v:"25 m²"},{k:"length",v:"4,0 m"},{k:"width",v:"6,25 m"},{k:"sleeps",v:"2"}],
+   name:{lv:"Tiny House 4",en:"Tiny House 4",nl:"Tiny House 4"},
+   desc:{lv:"Moderna mazmāja ar lielu stiklojumu un terases iespēju.",en:"A modern tiny home with large glazing and an optional terrace.",nl:"Een modern tiny house met grote beglazing en optioneel terras."}},
+  /* on wheels — real Grata THW models, verified specs + prices */
+  {id:"thw-1",cat:"houses-on-wheels",art:"b",area:"15,7 m²",rooms:null,price:24990,
+   specList:[{k:"living",v:"15,7 m²"},{k:"length",v:"6,12 m"},{k:"width",v:"2,56 m"},{k:"sleeps",v:"2"}],
+   name:{lv:"Māja uz riteņiem 1",en:"Tiny House on Wheels 1",nl:"Tiny House op Wielen 1"},
    desc:{lv:"Pilnībā aprīkota mobilā māja uz piekabes — gatava ceļam.",en:"A fully equipped mobile home on a trailer — ready for the road.",nl:"Een volledig uitgerust mobiel huis op een trailer — klaar voor onderweg."}},
-  {id:"roamer-20",cat:"houses-on-wheels",art:"b",area:"20 m²",rooms:2,price:null,
-   name:{lv:"Roamer 20",en:"Roamer 20",nl:"Roamer 20"},
-   desc:{lv:"Plašāks plānojums ar atsevišķu guļamvietu un pilnu virtuvi.",en:"A roomier layout with a separate sleeping loft and full kitchen.",nl:"Een ruimere indeling met aparte slaapvide en volledige keuken."}},
-  /* floating */
-  {id:"wave-40",cat:"floating-houses",art:"c",area:"40 m²",rooms:2,price:60000,
-   name:{lv:"Wave 40",en:"Wave 40",nl:"Wave 40"},
-   desc:{lv:"Peldoša māja uz pontoniem — lielisks risinājums atpūtai pie ūdens.",en:"A pontoon-mounted floating house — perfect for secluded waterside relaxation.",nl:"Een drijvend huis op pontons — perfect voor rustig verblijf aan het water."}},
-  {id:"wave-70",cat:"floating-houses",art:"c",area:"70 m²",rooms:3,price:null,
-   name:{lv:"Wave 70",en:"Wave 70",nl:"Wave 70"},
-   desc:{lv:"Lielāka peldošā māja ar terasi — mājai vai mājas birojam.",en:"A larger floating home with a terrace — for living or a home office.",nl:"Een groter drijvend huis met terras — om te wonen of als thuiskantoor."}},
+  {id:"thw-2",cat:"houses-on-wheels",art:"b",area:"15,7 m²",rooms:null,price:24990,
+   specList:[{k:"living",v:"15,7 m²"},{k:"length",v:"6,12 m"},{k:"width",v:"2,56 m"},{k:"sleeps",v:"2"}],
+   name:{lv:"Māja uz riteņiem 2",en:"Tiny House on Wheels 2",nl:"Tiny House op Wielen 2"},
+   desc:{lv:"Kompakta mobilā māja ar pilnu virtuvi un dušu.",en:"A compact mobile home with a full kitchen and shower.",nl:"Een compact mobiel huis met volledige keuken en douche."}},
+  {id:"thw-3",cat:"houses-on-wheels",art:"b",area:"15,7 m²",rooms:null,price:24990,
+   specList:[{k:"living",v:"15,7 m²"},{k:"length",v:"6,12 m"},{k:"width",v:"2,56 m"},{k:"sleeps",v:"2"}],
+   name:{lv:"Māja uz riteņiem 3",en:"Tiny House on Wheels 3",nl:"Tiny House op Wielen 3"},
+   desc:{lv:"Mājīga mobilā māja ar gaišu dzīvojamo zonu.",en:"A cosy mobile home with a bright living area.",nl:"Een gezellig mobiel huis met een lichte woonruimte."}},
+  {id:"thw-4",cat:"houses-on-wheels",art:"b",area:"15,7 m²",rooms:null,price:24990,
+   specList:[{k:"living",v:"15,7 m²"},{k:"length",v:"6,12 m"},{k:"width",v:"2,56 m"},{k:"sleeps",v:"2"}],
+   name:{lv:"Māja uz riteņiem 4",en:"Tiny House on Wheels 4",nl:"Tiny House op Wielen 4"},
+   desc:{lv:"Mobilā māja ar modernu interjeru un lielu stiklojumu.",en:"A mobile home with a modern interior and large glazing.",nl:"Een mobiel huis met modern interieur en grote beglazing."}},
+  {id:"thw-5",cat:"houses-on-wheels",art:"b",area:"20,3 m²",rooms:null,price:24990,
+   specList:[{k:"living",v:"20,3 m²"},{k:"length",v:"8,92 m"},{k:"width",v:"2,56 m"},{k:"sleeps",v:"2"}],
+   name:{lv:"Māja uz riteņiem 5",en:"Tiny House on Wheels 5",nl:"Tiny House op Wielen 5"},
+   desc:{lv:"Lielākā versija 20,3 m² ar atsevišķu guļamvietu.",en:"The larger 20.3 m² version with a separate sleeping area.",nl:"De grotere versie van 20,3 m² met aparte slaapzone."}},
+  /* floating — real Grata project (float-line 1) */
+  {id:"float-1",cat:"floating-houses",art:"c",area:"36,6 m²",rooms:4,price:null,
+   specList:[{k:"living",v:"36,6 m²"},{k:"length",v:"13,3 m"},{k:"width",v:"3,6 m"},{k:"specRooms",v:"4"}],
+   name:{lv:"Floating House 1",en:"Floating House 1",nl:"Floating House 1"},
+   desc:{lv:"Peldoša māja uz pontoniem, 36,6 m² — atpūtai pie ūdens vai mājas birojam.",en:"A 36.6 m² pontoon-mounted floating house — for waterside living or a home office.",nl:"Een drijvend huis op pontons van 36,6 m² — voor wonen aan het water of een thuiskantoor."}},
   /* family */
   {id:"eco-line",cat:"family-houses",art:"f",area:"120 m²",rooms:3,price:null,
    name:{lv:"ECO Line",en:"ECO Line",nl:"ECO Line"},
@@ -517,28 +536,29 @@ const PRODUCTS=[
    name:{lv:"Family 220",en:"Family 220",nl:"Family 220"},
    desc:{lv:"Plaša māja 200–250 m² ar individuālu arhitektūras projektu.",en:"A spacious 200–250 m² home with an individual architectural design.",nl:"Een ruime woning van 200–250 m² met een individueel architectuurontwerp."}},
   /* kits */
-  {id:"kit-standard",cat:"house-kits",art:"e",area:"25–300 m²",rooms:null,price:null,
-   name:{lv:"Karkasa komplekts",en:"Frame Kit",nl:"Framepakket"},
-   desc:{lv:"Numurētas karkasa daļas un materiāli ar montāžas instrukciju.",en:"Numbered frame parts and materials with assembly instructions.",nl:"Genummerde frameonderdelen en materialen met montage-instructies."}},
+  {id:"kit-standard",cat:"house-kits",art:"e",area:"103,2 m²",rooms:4,price:null,
+   specList:[{k:"living",v:"103,2 m²"},{k:"length",v:"7,0 m"},{k:"width",v:"12,0 m"},{k:"specRooms",v:"4"}],
+   name:{lv:"Būvmateriālu komplekts 1",en:"Building Set 1",nl:"Bouwpakket 1"},
+   desc:{lv:"Numurētas, sazāģētas karkasa daļas un materiāli (siltumizolācija, ģipškartons, apdare) — viegli samontēt pašiem pēc instrukcijas.",en:"Numbered, pre-cut frame parts and materials (insulation, plasterboard, lining) — easy to assemble yourself per the instructions.",nl:"Genummerde, voorgezaagde frameonderdelen en materialen (isolatie, gipsplaat, bekleding) — zelf eenvoudig te monteren volgens de instructies."}},
   /* saunas */
   /* saunas — real Grata models (sizes from model names); Eco Comfort 2,5m has verified specs + photos */
-  {id:"sauna-eco-comfort-25",cat:"barrel-saunas",art:"d",area:"2,5 m",rooms:null,price:null,photo:SAUNA_IMGS[0],gallery:SAUNA_IMGS,
+  {id:"sauna-eco-comfort-25",cat:"barrel-saunas",art:"d",area:"2,5 m",rooms:null,price:null,
    specList:[{k:"length",v:"2,50 m"},{k:"height",v:"2,30 m"},{k:"volume",v:"10,48 m³"},{k:"terrace",v:"—"}],
    name:{lv:"Eco Comfort 2,5m",en:"Eco Comfort 2.5m",nl:"Eco Comfort 2,5m"},
    desc:{lv:"Kompakta mucu pirts ar 8 mm rūdīta stikla durvīm — ideāla diviem.",en:"Compact barrel sauna with an 8 mm tempered glass door — ideal for two.",nl:"Compacte vatsauna met deur van 8 mm gehard glas — ideaal voor twee."}},
-  {id:"sauna-eco-comfort-plus-3",cat:"barrel-saunas",art:"d",area:"3 m",rooms:null,price:null,photo:SAUNA_IMGS[1],
+  {id:"sauna-eco-comfort-plus-3",cat:"barrel-saunas",art:"d",area:"3 m",rooms:null,price:null,
    name:{lv:"Eco Comfort Plus 3m",en:"Eco Comfort Plus 3m",nl:"Eco Comfort Plus 3m"},
    desc:{lv:"Plašāka pirts ar atpūtas zonu un lielāku tvaika telpu.",en:"A roomier sauna with a relaxation area and larger steam room.",nl:"Een ruimere sauna met ontspanningszone en grotere stoomruimte."}},
-  {id:"sauna-eco-dream-3",cat:"barrel-saunas",art:"d",area:"3 m",rooms:null,price:null,photo:SAUNA_IMGS[2],
+  {id:"sauna-eco-dream-3",cat:"barrel-saunas",art:"d",area:"3 m",rooms:null,price:null,
    name:{lv:"Eco Dream 3m",en:"Eco Dream 3m",nl:"Eco Dream 3m"},
    desc:{lv:"Komforta klases mucu pirts ar panorāmas logu.",en:"Comfort-class barrel sauna with a panoramic window.",nl:"Comfort-class vatsauna met panoramaraam."}},
-  {id:"sauna-eco-oasis-35",cat:"barrel-saunas",art:"d",area:"3,5 m",rooms:null,price:null,photo:SAUNA_IMGS[3],
+  {id:"sauna-eco-oasis-35",cat:"barrel-saunas",art:"d",area:"3,5 m",rooms:null,price:null,
    name:{lv:"Eco Oasis 3,5m",en:"Eco Oasis 3.5m",nl:"Eco Oasis 3,5m"},
    desc:{lv:"Pirts ar atsevišķu ģērbtuvi un terases iespēju.",en:"Sauna with a separate changing room and optional terrace.",nl:"Sauna met aparte kleedruimte en optioneel terras."}},
-  {id:"sauna-eco-steam-4",cat:"barrel-saunas",art:"d",area:"4 m",rooms:null,price:null,photo:SAUNA_IMGS[4],
+  {id:"sauna-eco-steam-4",cat:"barrel-saunas",art:"d",area:"4 m",rooms:null,price:null,
    name:{lv:"Eco Steam 4m",en:"Eco Steam 4m",nl:"Eco Steam 4m"},
    desc:{lv:"Ietilpīga pirts kompānijai, ar plašu atpūtas daļu.",en:"A spacious sauna for a group, with a large lounge area.",nl:"Een ruime sauna voor een gezelschap, met grote loungeruimte."}},
-  {id:"sauna-eco-relax-extra-5",cat:"barrel-saunas",art:"d",area:"5 m",rooms:null,price:null,photo:SAUNA_IMGS[0],
+  {id:"sauna-eco-relax-extra-5",cat:"barrel-saunas",art:"d",area:"5 m",rooms:null,price:null,
    name:{lv:"Eco Relax Extra 5m",en:"Eco Relax Extra 5m",nl:"Eco Relax Extra 5m"},
    desc:{lv:"Lielākā sērijas pirts — pirts, tvaika telpa un terase vienā.",en:"The largest in the range — sauna, steam room and terrace in one.",nl:"De grootste in de serie — sauna, stoomruimte en terras in één."}}
 ];
@@ -570,8 +590,48 @@ const PROD_PHOTO={
 };
 CATS.forEach(c=>{if(CAT_PHOTO[c.id])c.photo=CAT_PHOTO[c.id];});
 PRODUCTS.forEach(p=>{if(PROD_PHOTO[p.id])p.photo=PROD_PHOTO[p.id];});
-/* real sauna gallery on the barrel-saunas category + lead product */
+/* real sauna gallery on the barrel-saunas category + per-model photos */
 const SAUNA_CAT=CATS.find(c=>c.id==="barrel-saunas"); if(SAUNA_CAT) SAUNA_CAT.gallery=SAUNA_IMGS;
+const SAUNA_PROD_PHOTO={
+  "sauna-eco-comfort-25":0,"sauna-eco-comfort-plus-3":1,"sauna-eco-dream-3":2,
+  "sauna-eco-oasis-35":3,"sauna-eco-steam-4":4,"sauna-eco-relax-extra-5":0
+};
+PRODUCTS.forEach(p=>{
+  if(p.id in SAUNA_PROD_PHOTO) p.photo=SAUNA_IMGS[SAUNA_PROD_PHOTO[p.id]];
+  if(p.id==="sauna-eco-comfort-25") p.gallery=SAUNA_IMGS;
+});
+
+/* real tiny-house photos + floating-house photos */
+const TINY_BASE="https://www.grata-eco-house.com/images/projekti/tiny-houses/";
+function tinyGallery(n,count){const a=[];const f=String(n).padStart(2,'0');for(let i=1;i<=count;i++){a.push(TINY_BASE+f+"/tiny-houses-"+n+"-"+String(i).padStart(2,'0')+".jpg");}return a;}
+const TINY_COUNT={1:9,2:8,3:6,4:8};
+const FLOAT_BASE="https://www.grata-eco-house.com/images/projekti/float-line/01/";
+const FLOAT_GAL=[FLOAT_BASE+"float-line-1-01.jpg",FLOAT_BASE+"float-line-1-02.jpg",FLOAT_BASE+"float-line-1-03.jpg"];
+PRODUCTS.forEach(p=>{
+  const m=/^tiny-([1-4])$/.exec(p.id);
+  if(m){const g=tinyGallery(+m[1],TINY_COUNT[+m[1]]);p.gallery=g;p.photo=g[0];}
+  if(p.id==="float-1"){p.gallery=FLOAT_GAL;p.photo=FLOAT_GAL[0];}
+});
+const TINY_CAT=CATS.find(c=>c.id==="tiny-houses"); if(TINY_CAT){const g=tinyGallery(1,9);TINY_CAT.photo=g[0];TINY_CAT.gallery=g;}
+const FLOAT_CAT=CATS.find(c=>c.id==="floating-houses"); if(FLOAT_CAT){FLOAT_CAT.photo=FLOAT_GAL[0];FLOAT_CAT.gallery=FLOAT_GAL;}
+
+/* real tiny-house-on-wheels photos (irregular file names, listed explicitly) */
+const THW="https://www.grata-eco-house.com/images/projekti/thw/";
+const THW_GAL={
+  "thw-1":[THW+"thw-01/1-thw-01-01.jpg",THW+"thw-01/1-thw-01-02.jpg",THW+"thw-01/1-thw-01-03.jpg",THW+"thw-01/1-thw-01-04.jpg",THW+"thw-01/1-thw-01-05.jpg"],
+  "thw-2":[THW+"thw-02/2-thw-00-01.jpg",THW+"thw-02/2-thw-00-02.jpg",THW+"thw-02/2-thw-00-03.jpg",THW+"thw-02/2-thw-00-04.jpg",THW+"thw-02/2-thw-00-05.jpg"],
+  "thw-3":[THW+"thw-03/3-thw-00-01.jpg",THW+"thw-03/3-thw-00-02.jpg",THW+"thw-03/3-thw-00-03.jpg",THW+"thw-03/3-thw-00-04.jpg",THW+"thw-03/3-thw-00-05.jpg"],
+  "thw-4":[THW+"thw-04/THW-4-001.jpg",THW+"thw-04/THW-4-002.jpg",THW+"thw-04/THW-4-003.jpg",THW+"thw-04/THW-4-004.jpg",THW+"thw-04/THW-4-005.jpg"],
+  "thw-5":[THW+"thw-05/5-thw-01-01.jpg",THW+"thw-05/5-thw-01-02.jpg",THW+"thw-05/5-thw-01-03.jpg",THW+"thw-05/5-thw-01-04.jpg",THW+"thw-05/5-thw-01-05.jpg"]
+};
+PRODUCTS.forEach(p=>{if(THW_GAL[p.id]){p.gallery=THW_GAL[p.id];p.photo=THW_GAL[p.id][0];}});
+const THW_CAT=CATS.find(c=>c.id==="houses-on-wheels"); if(THW_CAT){THW_CAT.photo=THW_GAL["thw-1"][0];THW_CAT.gallery=THW_GAL["thw-1"];}
+
+/* real house-kit (building set) photos */
+const KIT="https://www.grata-eco-house.com/images/projekti/building-set/01/";
+const KIT_GAL=[KIT+"building-set-1-1.jpg",KIT+"building-set-1-2.jpg",KIT+"building-set-1-3.jpg",KIT+"building-set-1-4.jpg",KIT+"building-set-1-5.jpg",KIT+"building-set-1-6.jpg"];
+PRODUCTS.forEach(p=>{if(p.id==="kit-standard"){p.gallery=KIT_GAL;p.photo=KIT_GAL[0];}});
+const KIT_CAT=CATS.find(c=>c.id==="house-kits"); if(KIT_CAT){KIT_CAT.photo=KIT_GAL[0];KIT_CAT.gallery=KIT_GAL;}
 
 /* ---------- i18n STRINGS ---------- */
 const I={
@@ -726,7 +786,8 @@ const EXT={
     q3:"Uz kurām valstīm jūs piegādājat?", a3:"Esam uzbūvējuši mājas visā Eiropā — Vācijā, Norvēģijā, Zviedrijā, Šveicē, Francijā un Lielbritānijā.",
     q4:"Vai mājas atbilst vietējiem būvnormatīviem?", a4:"Jā. Projektējam atbilstoši vietējiem standartiem un A energoefektivitātes klasei vai augstāk.",
     sticky:"Saņemt piedāvājumu", callTitle:"Zvanīt mums",
-    length:"Garums", height:"Augstums", volume:"Tilpums", terrace:"Terase"
+    length:"Garums", height:"Augstums", volume:"Tilpums", terrace:"Terase",
+    living:"Dzīvojamā platība", width:"Platums", sleeps:"Guļamvietas"
   },
   en:{
     statWarranty:"year warranty", statClass:"energy efficiency class", statCountries:"countries in Europe", statMaterials:"certified materials",
@@ -737,7 +798,8 @@ const EXT={
     q3:"Which countries do you deliver to?", a3:"We've built houses across Europe — Germany, Norway, Sweden, Switzerland, France and the UK.",
     q4:"Do the houses meet local building codes?", a4:"Yes. We design to local standards and to energy efficiency class A or higher.",
     sticky:"Get a quote", callTitle:"Call us",
-    length:"Length", height:"Height", volume:"Volume", terrace:"Terrace"
+    length:"Length", height:"Height", volume:"Volume", terrace:"Terrace",
+    living:"Living space", width:"Width", sleeps:"Sleeping places"
   },
   nl:{
     statWarranty:"jaar garantie", statClass:"energie-efficiëntieklasse", statCountries:"landen in Europa", statMaterials:"gecertificeerde materialen",
@@ -748,7 +810,8 @@ const EXT={
     q3:"Naar welke landen leveren jullie?", a3:"We hebben woningen gebouwd in heel Europa — Duitsland, Noorwegen, Zweden, Zwitserland, Frankrijk en het VK.",
     q4:"Voldoen de woningen aan lokale bouwvoorschriften?", a4:"Ja. We ontwerpen volgens lokale normen en energieklasse A of hoger.",
     sticky:"Vraag een offerte", callTitle:"Bel ons",
-    length:"Lengte", height:"Hoogte", volume:"Volume", terrace:"Terras"
+    length:"Lengte", height:"Hoogte", volume:"Volume", terrace:"Terras",
+    living:"Woonoppervlak", width:"Breedte", sleeps:"Slaapplaatsen"
   }
 };
 Object.keys(EXT).forEach(l=>Object.assign(I[l],EXT[l]));
