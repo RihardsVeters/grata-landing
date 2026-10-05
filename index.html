@@ -193,6 +193,85 @@ footer p.small{font-size:.84rem;color:#9db4a3;margin-top:14px}
 .dom-row a{color:#9db4a3}
 .dom-row a:hover{color:#fff}
 
+/* ---------- PHOTO THUMBS ---------- */
+.thumb .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .6s ease}
+.card:hover .thumb .photo{transform:scale(1.06)}
+.pd-art .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.hero-art .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+
+/* ---------- HERO SLIDESHOW ---------- */
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slides .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s ease;transform:scale(1.05);animation:kb 12s ease-out infinite}
+.hero-slides .slide.on{opacity:1}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+.hero.photo-hero{color:#fff}
+.hero.photo-hero .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(28,40,32,.86) 0%,rgba(28,40,32,.6) 48%,rgba(28,40,32,.2) 100%)}
+.hero.photo-hero .wrap{position:relative;z-index:2}
+.hero.photo-hero h1{color:#fff}
+.hero.photo-hero p.lead{color:#ede7da}
+.hero.photo-hero .eyebrow{color:#e9b588}
+.hero.photo-hero .eyebrow::before{background:#e9b588}
+.hero.photo-hero .tick{color:#fff}
+.hero.photo-hero .btn-ghost{color:#fff;border-color:#fff}
+.hero.photo-hero .btn-ghost:hover{background:#fff;color:var(--forest)}
+.hero-single-wrap{max-width:720px}
+.trust-bar{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.22)}
+.trust-bar .ti{display:flex;align-items:center;gap:8px;font-size:.84rem;font-weight:600;color:#fff}
+.trust-bar .ti b{font-family:var(--serif);font-size:1.15rem;color:#e9b588}
+
+/* ---------- STATS ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat{text-align:center;padding:22px 14px;background:var(--paper);border:1px solid var(--line);border-radius:16px}
+.stat .num{font-family:var(--serif);font-size:2.6rem;font-weight:700;color:var(--forest);line-height:1}
+.stat .lbl{font-size:.82rem;color:var(--muted);margin-top:8px;font-weight:500}
+
+/* ---------- REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero-slides .slide{animation:none}}
+
+/* ---------- GALLERY ---------- */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gallery .g{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;cursor:pointer;background:var(--sage-soft)}
+.gallery .g:nth-child(1){grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gallery .g img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gallery .g:hover img{transform:scale(1.08)}
+.gallery .g .flag{position:absolute;left:10px;bottom:10px;z-index:2;background:rgba(28,40,32,.72);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;padding:4px 9px;border-radius:999px;backdrop-filter:blur(4px)}
+
+/* ---------- LIGHTBOX ---------- */
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(20,28,22,.92);display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
+.lightbox.open{display:flex;animation:fade .25s}
+.lightbox img{max-width:92vw;max-height:86vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lightbox .lb-close{position:absolute;top:20px;right:26px;color:#fff;font-size:2rem;cursor:pointer;line-height:1}
+
+/* ---------- MODAL ---------- */
+.modal{position:fixed;inset:0;z-index:210;background:rgba(20,28,22,.6);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;padding:30px 18px;overflow-y:auto}
+.modal.open{display:flex;animation:fade .25s}
+.modal .form-card{max-width:560px;width:100%;margin:auto;position:relative;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+.modal .m-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.6rem;color:var(--muted);cursor:pointer;line-height:1;z-index:3}
+.modal .m-close:hover{color:var(--forest)}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:780px;margin:0 auto}
+.faq-item{border:1px solid var(--line);border-radius:14px;margin-bottom:12px;background:var(--paper);overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;cursor:pointer;font-family:var(--serif);font-size:1.08rem;color:var(--forest);font-weight:700}
+.faq-q .tog{font-size:1.4rem;color:var(--wood);transition:transform .25s;flex:none}
+.faq-item.open .faq-q .tog{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-a p{padding:0 22px 20px;color:var(--muted);font-size:.95rem}
+.faq-item.open .faq-a{max-height:260px}
+
+/* ---------- STICKY MOBILE CTA ---------- */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:120;display:none;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(251,248,242,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);gap:10px}
+.sticky-cta .btn{flex:1;justify-content:center}
+.sticky-cta .btn-call{flex:none;width:52px;background:var(--forest);color:#fff;padding:14px}
+
+/* ---------- FLOATING CALL ---------- */
+.float-call{position:fixed;right:20px;bottom:84px;z-index:110;width:56px;height:56px;border-radius:50%;background:#25a05a;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -8px rgba(37,160,90,.7);cursor:pointer;transition:.2s}
+.float-call:hover{transform:scale(1.08)}
+.float-call svg{width:28px;height:28px}
+
 /* ---------- VIEW TRANSITION ---------- */
 #view{animation:fade .4s ease}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -205,9 +284,16 @@ footer p.small{font-size:.84rem;color:#9db4a3;margin-top:14px}
   .foot-grid{grid-template-columns:1fr 1fr}
   nav.main,.hdr .lang.desk{display:none}
   .burger{display:flex}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .gallery .g:nth-child(1){grid-column:span 2;grid-row:auto;aspect-ratio:16/10}
+  .sticky-cta{display:flex}
+  .float-call{bottom:88px}
+  body{padding-bottom:72px}
 }
 @media(max-width:560px){
   .cards,.cards.two,.specs,.fgrid,.features{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
   .form-card{padding:26px 20px}
   .cta-band{padding:38px 24px}
   section.block{padding:52px 0}
@@ -261,6 +347,18 @@ footer p.small{font-size:.84rem;color:#9db4a3;margin-top:14px}
 </header>
 
 <main id="view"></main>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"></div>
+<div class="lightbox" id="lightbox" onclick="closeLightbox()"><span class="lb-close">&times;</span><img id="lbimg" src="" alt=""></div>
+
+<a class="float-call" href="tel:+37100000000" id="floatCall" title="">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.3a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.24 1l-2.02 2.3Z" fill="currentColor"/></svg>
+</a>
+
+<div class="sticky-cta" id="stickyCta">
+  <a class="btn btn-primary" onclick="openModal('')" id="stickyBtn">Saņemt piedāvājumu</a>
+  <a class="btn btn-call" href="tel:+37100000000"><svg viewBox="0 0 24 24" fill="none" style="width:22px;height:22px"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.3a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.24 1l-2.02 2.3Z" fill="currentColor"/></svg></a>
+</div>
 
 <footer>
   <div class="wrap">
@@ -423,13 +521,57 @@ const PRODUCTS=[
    name:{lv:"Karkasa komplekts",en:"Frame Kit",nl:"Framepakket"},
    desc:{lv:"Numurētas karkasa daļas un materiāli ar montāžas instrukciju.",en:"Numbered frame parts and materials with assembly instructions.",nl:"Genummerde frameonderdelen en materialen met montage-instructies."}},
   /* saunas */
-  {id:"sauna-s",cat:"barrel-saunas",art:"d",area:"Ø 2.0 m",rooms:null,price:null,
-   name:{lv:"Mucu pirts S",en:"Barrel Sauna S",nl:"Vatsauna S"},
-   desc:{lv:"Kompakta mucu pirts ar 8 mm rūdīta stikla durvīm.",en:"Compact barrel sauna with an 8 mm tempered glass door.",nl:"Compacte vatsauna met een deur van 8 mm gehard glas."}},
-  {id:"sauna-l",cat:"barrel-saunas",art:"d",area:"Ø 2.4 m",rooms:null,price:null,
-   name:{lv:"Mucu pirts L",en:"Barrel Sauna L",nl:"Vatsauna L"},
-   desc:{lv:"Lielāka pirts ar atpūtas zonu un priekštelpu.",en:"A larger sauna with a relaxation area and porch.",nl:"Een grotere sauna met ontspanningsruimte en voorportaal."}}
+  /* saunas — real Grata models (sizes from model names); Eco Comfort 2,5m has verified specs + photos */
+  {id:"sauna-eco-comfort-25",cat:"barrel-saunas",art:"d",area:"2,5 m",rooms:null,price:null,photo:SAUNA_IMGS[0],gallery:SAUNA_IMGS,
+   specList:[{k:"length",v:"2,50 m"},{k:"height",v:"2,30 m"},{k:"volume",v:"10,48 m³"},{k:"terrace",v:"—"}],
+   name:{lv:"Eco Comfort 2,5m",en:"Eco Comfort 2.5m",nl:"Eco Comfort 2,5m"},
+   desc:{lv:"Kompakta mucu pirts ar 8 mm rūdīta stikla durvīm — ideāla diviem.",en:"Compact barrel sauna with an 8 mm tempered glass door — ideal for two.",nl:"Compacte vatsauna met deur van 8 mm gehard glas — ideaal voor twee."}},
+  {id:"sauna-eco-comfort-plus-3",cat:"barrel-saunas",art:"d",area:"3 m",rooms:null,price:null,photo:SAUNA_IMGS[1],
+   name:{lv:"Eco Comfort Plus 3m",en:"Eco Comfort Plus 3m",nl:"Eco Comfort Plus 3m"},
+   desc:{lv:"Plašāka pirts ar atpūtas zonu un lielāku tvaika telpu.",en:"A roomier sauna with a relaxation area and larger steam room.",nl:"Een ruimere sauna met ontspanningszone en grotere stoomruimte."}},
+  {id:"sauna-eco-dream-3",cat:"barrel-saunas",art:"d",area:"3 m",rooms:null,price:null,photo:SAUNA_IMGS[2],
+   name:{lv:"Eco Dream 3m",en:"Eco Dream 3m",nl:"Eco Dream 3m"},
+   desc:{lv:"Komforta klases mucu pirts ar panorāmas logu.",en:"Comfort-class barrel sauna with a panoramic window.",nl:"Comfort-class vatsauna met panoramaraam."}},
+  {id:"sauna-eco-oasis-35",cat:"barrel-saunas",art:"d",area:"3,5 m",rooms:null,price:null,photo:SAUNA_IMGS[3],
+   name:{lv:"Eco Oasis 3,5m",en:"Eco Oasis 3.5m",nl:"Eco Oasis 3,5m"},
+   desc:{lv:"Pirts ar atsevišķu ģērbtuvi un terases iespēju.",en:"Sauna with a separate changing room and optional terrace.",nl:"Sauna met aparte kleedruimte en optioneel terras."}},
+  {id:"sauna-eco-steam-4",cat:"barrel-saunas",art:"d",area:"4 m",rooms:null,price:null,photo:SAUNA_IMGS[4],
+   name:{lv:"Eco Steam 4m",en:"Eco Steam 4m",nl:"Eco Steam 4m"},
+   desc:{lv:"Ietilpīga pirts kompānijai, ar plašu atpūtas daļu.",en:"A spacious sauna for a group, with a large lounge area.",nl:"Een ruime sauna voor een gezelschap, met grote loungeruimte."}},
+  {id:"sauna-eco-relax-extra-5",cat:"barrel-saunas",art:"d",area:"5 m",rooms:null,price:null,photo:SAUNA_IMGS[0],
+   name:{lv:"Eco Relax Extra 5m",en:"Eco Relax Extra 5m",nl:"Eco Relax Extra 5m"},
+   desc:{lv:"Lielākā sērijas pirts — pirts, tvaika telpa un terase vienā.",en:"The largest in the range — sauna, steam room and terrace in one.",nl:"De grootste in de serie — sauna, stoomruimte en terras in één."}}
 ];
+
+/* ---------- REAL PHOTOS from existing site ---------- */
+const IMG="https://www.grata-eco-house.com/images/gallery-page/";
+const HERO_SLIDES=[IMG+"Switzerland/Switzerland-001.jpg",IMG+"Norway/Norway-001.jpg",IMG+"Sweden/Sweden-001.jpg",IMG+"Germany/Germany-001.jpg"];
+const GALLERY=[
+  {src:IMG+"Norway/Norway-002.jpg",flag:"Norway"},
+  {src:IMG+"Germany/Germany-002.jpg",flag:"Germany"},
+  {src:IMG+"Sweden/Sweden-002.jpg",flag:"Sweden"},
+  {src:IMG+"Switzerland/Switzerland-002.jpg",flag:"Switzerland"},
+  {src:IMG+"Sweden/Sweden-003.jpg",flag:"Sweden"},
+  {src:IMG+"Norway/Norway-003.jpg",flag:"Norway"},
+  {src:IMG+"France/France-001.jpg",flag:"France"},
+  {src:IMG+"Germany/Germany-003.jpg",flag:"Germany"},
+  {src:IMG+"Switzerland/Switzerland-003.jpg",flag:"Switzerland"},
+  {src:IMG+"Great-Britain/GB-001.jpg",flag:"United Kingdom"},
+  {src:IMG+"Norway/Norway-004.jpg",flag:"Norway"}
+];
+/* attach representative real photos to the family-house range (full houses) */
+const SB="https://www.grata-eco-house.com/images/projekti/BS/eco_comfort_2_5/";
+const SAUNA_IMGS=[SB+"eco_comfort_2_5_01.jpg",SB+"eco_comfort_2_5_03.png",SB+"eco_comfort_2_5_02.PNG",SB+"eco_comfort_2_5_05.PNG",SB+"eco_comfort_2_5_06.PNG"];
+const CAT_PHOTO={"family-houses":IMG+"Norway/Norway-002.jpg","barrel-saunas":SAUNA_IMGS[0]};
+const PROD_PHOTO={
+  "eco-line":IMG+"Sweden/Sweden-002.jpg",
+  "family-150":IMG+"Germany/Germany-002.jpg",
+  "family-220":IMG+"Switzerland/Switzerland-004.jpg"
+};
+CATS.forEach(c=>{if(CAT_PHOTO[c.id])c.photo=CAT_PHOTO[c.id];});
+PRODUCTS.forEach(p=>{if(PROD_PHOTO[p.id])p.photo=PROD_PHOTO[p.id];});
+/* real sauna gallery on the barrel-saunas category + lead product */
+const SAUNA_CAT=CATS.find(c=>c.id==="barrel-saunas"); if(SAUNA_CAT) SAUNA_CAT.gallery=SAUNA_IMGS;
 
 /* ---------- i18n STRINGS ---------- */
 const I={
@@ -573,6 +715,44 @@ const I={
   }
 };
 
+/* ---------- i18n EXTENSION ---------- */
+const EXT={
+  lv:{
+    statWarranty:"gadu garantija", statClass:"energoefektivitātes klase", statCountries:"valstis Eiropā", statMaterials:"sertificēti materiāli",
+    galleryEyebrow:"Uzbūvēts Eiropā", galleryTitle:"Mūsu mājas visā Eiropā", galleryLead:"Reāli projekti Vācijā, Norvēģijā, Zviedrijā, Šveicē, Francijā un Lielbritānijā. Spiediet, lai palielinātu.",
+    faqEyebrow:"Biežāk uzdotie jautājumi", faqTitle:"Pirms pieteikšanās",
+    q1:"Cik ilgā laikā māja tiek uzbūvēta?", a1:"Rūpnīcā izgatavotie elementi tiek samontēti uz vietas dažu nedēļu laikā — atkarībā no projekta izmēra un sarežģītības.",
+    q2:"Vai cenā iekļauta piegāde un montāža?", a2:"Katrs piedāvājums ir individuāls. Atstājiet pieteikumu, un sagatavosim precīzu tāmi tieši jūsu valstij un projektam.",
+    q3:"Uz kurām valstīm jūs piegādājat?", a3:"Esam uzbūvējuši mājas visā Eiropā — Vācijā, Norvēģijā, Zviedrijā, Šveicē, Francijā un Lielbritānijā.",
+    q4:"Vai mājas atbilst vietējiem būvnormatīviem?", a4:"Jā. Projektējam atbilstoši vietējiem standartiem un A energoefektivitātes klasei vai augstāk.",
+    sticky:"Saņemt piedāvājumu", callTitle:"Zvanīt mums",
+    length:"Garums", height:"Augstums", volume:"Tilpums", terrace:"Terase"
+  },
+  en:{
+    statWarranty:"year warranty", statClass:"energy efficiency class", statCountries:"countries in Europe", statMaterials:"certified materials",
+    galleryEyebrow:"Built across Europe", galleryTitle:"Our houses across Europe", galleryLead:"Real projects in Germany, Norway, Sweden, Switzerland, France and the UK. Click to enlarge.",
+    faqEyebrow:"Frequently asked", faqTitle:"Before you apply",
+    q1:"How long does it take to build a house?", a1:"Factory-made elements are assembled on site within a few weeks — depending on the size and complexity of the project.",
+    q2:"Are delivery and assembly included in the price?", a2:"Every offer is individual. Leave an inquiry and we'll prepare a precise estimate for your country and project.",
+    q3:"Which countries do you deliver to?", a3:"We've built houses across Europe — Germany, Norway, Sweden, Switzerland, France and the UK.",
+    q4:"Do the houses meet local building codes?", a4:"Yes. We design to local standards and to energy efficiency class A or higher.",
+    sticky:"Get a quote", callTitle:"Call us",
+    length:"Length", height:"Height", volume:"Volume", terrace:"Terrace"
+  },
+  nl:{
+    statWarranty:"jaar garantie", statClass:"energie-efficiëntieklasse", statCountries:"landen in Europa", statMaterials:"gecertificeerde materialen",
+    galleryEyebrow:"Gebouwd in heel Europa", galleryTitle:"Onze woningen in heel Europa", galleryLead:"Echte projecten in Duitsland, Noorwegen, Zweden, Zwitserland, Frankrijk en het VK. Klik om te vergroten.",
+    faqEyebrow:"Veelgestelde vragen", faqTitle:"Voordat u aanvraagt",
+    q1:"Hoe lang duurt het om een huis te bouwen?", a1:"Fabrieksgemaakte elementen worden binnen enkele weken op locatie gemonteerd — afhankelijk van de omvang en complexiteit van het project.",
+    q2:"Zijn levering en montage inbegrepen in de prijs?", a2:"Elke offerte is individueel. Laat een aanvraag achter en wij maken een nauwkeurige raming voor uw land en project.",
+    q3:"Naar welke landen leveren jullie?", a3:"We hebben woningen gebouwd in heel Europa — Duitsland, Noorwegen, Zweden, Zwitserland, Frankrijk en het VK.",
+    q4:"Voldoen de woningen aan lokale bouwvoorschriften?", a4:"Ja. We ontwerpen volgens lokale normen en energieklasse A of hoger.",
+    sticky:"Vraag een offerte", callTitle:"Bel ons",
+    length:"Lengte", height:"Hoogte", volume:"Volume", terrace:"Terras"
+  }
+};
+Object.keys(EXT).forEach(l=>Object.assign(I[l],EXT[l]));
+
 /* ---------- STATE ---------- */
 let LANG = localStorage.getItem('grata_lang') || 'lv';
 if(!I[LANG]) LANG='lv';
@@ -614,7 +794,7 @@ function catCard(c){
     ? `<div class="price">${euro(c.priceFrom)}<small>${t('from')}</small></div>`
     : `<div class="price" style="font-size:.9rem">${t('reqPrice')}</div>`;
   return `<div class="card" onclick="goCat('${c.id}')">
-    <div class="thumb">${houseArt(c.art)}</div>
+    <div class="thumb">${houseArt(c.art)}${c.photo?`<img class="photo" src="${c.photo}" loading="lazy" alt="${nm(c.name)}" onerror="this.remove()">`:''}</div>
     <div class="body">
       <div class="tag">${t('prodEyebrow')}</div>
       <h3>${nm(c.name)}</h3>
@@ -630,7 +810,7 @@ function prodCard(p){
   const meta=[`<span class="chip">${p.area}</span>`];
   if(p.rooms) meta.push(`<span class="chip">${p.rooms} ${t('specRooms').toLowerCase()}</span>`);
   return `<div class="card" onclick="goProd('${p.id}')">
-    <div class="thumb">${houseArt(p.art)}</div>
+    <div class="thumb">${houseArt(p.art)}${p.photo?`<img class="photo" src="${p.photo}" loading="lazy" alt="${nm(p.name)}" onerror="this.remove()">`:''}</div>
     <div class="body">
       <div class="tag">${nm(CATS.find(c=>c.id===p.cat).name)}</div>
       <h3>${nm(p.name)}</h3>
@@ -642,12 +822,11 @@ function prodCard(p){
 }
 
 /* ---------- INQUIRY FORM (on every page) ---------- */
-function formBlock(prefill){
+function formInner(prefill,withClose){
   const opts = CATS.map(c=>`<option value="${nm(c.name)}" ${prefill===nm(c.name)?'selected':''}>${nm(c.name)}</option>`).join('');
   const prodOpts = PRODUCTS.map(p=>`<option value="${nm(p.name)} — ${nm(CATS.find(c=>c.id===p.cat).name)}" ${prefill===nm(p.name)?'selected':''}>${nm(p.name)} — ${nm(CATS.find(c=>c.id===p.cat).name)}</option>`).join('');
-  return `<section class="block bg-paper form-section" id="inquiry">
-    <div class="wrap">
-      <div class="form-card inline">
+  return `<div class="form-card inline">
+        ${withClose?`<button class="m-close" onclick="closeModal()" aria-label="Close">&times;</button>`:''}
         <div class="form-head">
           <div class="eyebrow">${t('formEyebrow')}</div>
           <h3>${t('formTitle')}</h3>
@@ -676,7 +855,12 @@ function formBlock(prefill){
           <h3>${t('okTitle')}</h3>
           <p>${t('okMsg')}</p>
         </div>
-      </div>
+      </div>`;
+}
+function formBlock(prefill){
+  return `<section class="block bg-paper form-section" id="inquiry">
+    <div class="wrap">
+      ${formInner(prefill,false)}
     </div>
   </section>`;
 }
@@ -700,25 +884,39 @@ function submitForm(e){
 /* ---------- VIEWS ---------- */
 function viewHome(){
   return `
-  <section class="hero"><div class="hero-blob"></div>
-    <div class="wrap"><div class="hero-grid">
-      <div>
+  <section class="hero photo-hero">
+    <div class="hero-slides" id="heroSlides"></div>
+    <div class="hero-overlay"></div>
+    <div class="wrap">
+      <div class="hero-single-wrap">
         <div class="eyebrow">${t('heroEyebrow')}</div>
         <h1>${t('heroTitle')}</h1>
         <p class="lead">${t('heroLead')}</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" onclick="scrollForm()">${t('heroCta1')} →</a>
+          <a class="btn btn-primary" onclick="openModal('')">${t('heroCta1')} →</a>
           <a class="btn btn-ghost" onclick="go('products')">${t('heroCta2')}</a>
         </div>
-        ${ticksRow()}
+        <div class="trust-bar">
+          <span class="ti"><b>10</b> ${t('statWarranty')}</span>
+          <span class="ti"><b>A</b> ${t('statClass')}</span>
+          <span class="ti"><b>6+</b> ${t('statCountries')}</span>
+        </div>
       </div>
-      <div class="hero-art">${houseArt('f')}</div>
-    </div></div>
+    </div>
   </section>
 
   <section class="block"><div class="wrap">
-    <div class="sec-head"><div class="eyebrow">${t('featEyebrow')}</div><h2>${t('featTitle')}</h2></div>
-    <div class="features">
+    <div class="stats reveal">
+      <div class="stat"><div class="num" data-count="10">10</div><div class="lbl">${t('statWarranty')}</div></div>
+      <div class="stat"><div class="num">A</div><div class="lbl">${t('statClass')}</div></div>
+      <div class="stat"><div class="num" data-count="6" data-suffix="+">6+</div><div class="lbl">${t('statCountries')}</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">${t('statMaterials')}</div></div>
+    </div>
+  </div></section>
+
+  <section class="block bg-paper"><div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">${t('featEyebrow')}</div><h2>${t('featTitle')}</h2></div>
+    <div class="features reveal">
       <div class="feature"><div class="ic">${ic.leaf}</div><h4>${t('f1t')}</h4><p>${t('f1p')}</p></div>
       <div class="feature"><div class="ic">${ic.bolt}</div><h4>${t('f2t')}</h4><p>${t('f2p')}</p></div>
       <div class="feature"><div class="ic">${ic.ruler}</div><h4>${t('f3t')}</h4><p>${t('f3p')}</p></div>
@@ -726,15 +924,27 @@ function viewHome(){
     </div>
   </div></section>
 
+  <section class="block"><div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">${t('catEyebrow')}</div><h2>${t('catTitle')}</h2><p>${t('catLead')}</p></div>
+    <div class="cards reveal">${CATS.map(catCard).join('')}</div>
+  </div></section>
+
   <section class="block bg-paper"><div class="wrap">
-    <div class="sec-head"><div class="eyebrow">${t('catEyebrow')}</div><h2>${t('catTitle')}</h2><p>${t('catLead')}</p></div>
-    <div class="cards">${CATS.map(catCard).join('')}</div>
+    <div class="sec-head reveal"><div class="eyebrow">${t('galleryEyebrow')}</div><h2>${t('galleryTitle')}</h2><p>${t('galleryLead')}</p></div>
+    <div class="gallery reveal">${GALLERY.map(g=>`<div class="g" onclick="openLightbox('${g.src}')"><span class="flag">${g.flag}</span><img src="${g.src}" loading="lazy" alt="${g.flag}" onerror="this.closest('.g').style.display='none'"></div>`).join('')}</div>
   </div></section>
 
   <section class="block"><div class="wrap">
-    <div class="cta-band">
+    <div class="cta-band reveal">
       <h2>${t('ctaTitle')}</h2><p>${t('ctaLead')}</p>
-      <a class="btn btn-primary" onclick="scrollForm()">${t('ctaBtn')} →</a>
+      <a class="btn btn-primary" onclick="openModal('')">${t('ctaBtn')} →</a>
+    </div>
+  </div></section>
+
+  <section class="block bg-paper"><div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin:0 auto 32px"><div class="eyebrow" style="justify-content:center">${t('faqEyebrow')}</div><h2>${t('faqTitle')}</h2></div>
+    <div class="faq reveal">
+      ${[1,2,3,4].map(n=>`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">${t('q'+n)}<span class="tog">+</span></div><div class="faq-a"><p>${t('a'+n)}</p></div></div>`).join('')}
     </div>
   </div></section>
 
@@ -767,9 +977,9 @@ function viewCategory(id){
         <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);color:var(--forest);line-height:1.1;font-weight:700">${nm(c.name)}</h2>
         <p class="lead" style="margin-top:16px">${nm(c.blurb)}</p>
         ${c.priceFrom?`<p style="font-family:var(--serif);font-size:1.3rem;color:var(--wood);font-weight:700;margin-top:8px">${t('from')} ${euro(c.priceFrom)}</p>`:''}
-        <div class="hero-cta" style="margin-top:22px"><a class="btn btn-primary" onclick="scrollForm()">${t('heroCta1')} →</a></div>
+        <div class="hero-cta" style="margin-top:22px"><a class="btn btn-primary" onclick="openModal('${nm(c.name)}')">${t('heroCta1')} →</a></div>
       </div>
-      <div class="hero-art" style="aspect-ratio:4/3">${houseArt(c.art)}</div>
+      <div class="hero-art" style="aspect-ratio:4/3">${houseArt(c.art)}${c.photo?`<img class="photo" src="${c.photo}" alt="${nm(c.name)}" onerror="this.remove()">`:''}</div>
     </div>
   </div></section>
   <section class="block bg-paper" style="padding-top:50px"><div class="wrap">
@@ -783,7 +993,9 @@ function viewProduct(id){
   const p=PRODUCTS.find(x=>x.id===id);
   if(!p) return viewProducts();
   const c=CATS.find(x=>x.id===p.cat);
-  const specs=[
+  const specs = p.specList
+    ? p.specList.map(s=>({k:t(s.k),v:s.v}))
+    : [
     {k:t('specArea'),v:p.area},
     p.rooms?{k:t('specRooms'),v:p.rooms}:{k:t('specClass'),v:"A"},
     {k:t('specWarranty'),v:t('years')},
@@ -801,13 +1013,16 @@ function viewProduct(id){
   </div></div>
   <section class="block" style="padding-top:26px"><div class="wrap">
     <div class="pd">
-      <div class="pd-art">${houseArt(p.art)}</div>
+      <div>
+        <div class="pd-art">${houseArt(p.art)}${p.photo?`<img class="photo" src="${p.photo}" alt="${nm(p.name)}" onerror="this.remove()">`:''}</div>
+        ${p.gallery?`<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:12px">${p.gallery.map(g=>`<img src="${g}" loading="lazy" alt="${nm(p.name)}" onclick="openLightbox('${g}')" onerror="this.remove()" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:9px;cursor:zoom-in;border:1px solid var(--line)">`).join('')}</div>`:''}
+      </div>
       <div>
         <div class="eyebrow">${nm(c.name)}</div>
         <h1>${nm(p.name)}</h1>
         <p class="lead">${nm(p.desc)}</p>
         <div class="specs">${specs.map(s=>`<div class="spec"><div class="k">${s.k}</div><div class="v">${s.v}</div></div>`).join('')}</div>
-        <div class="price-box">${priceHtml}<a class="btn btn-primary" onclick="scrollForm()">${t('pdInquire')} →</a></div>
+        <div class="price-box">${priceHtml}<a class="btn btn-primary" onclick="openModal('${nm(p.name)}')">${t('pdInquire')} →</a></div>
         <h3 style="font-family:var(--serif);color:var(--forest);font-size:1.2rem;margin-bottom:4px">${t('pdFeatures')}</h3>
         <ul class="feat-list">
           <li>${ic.check}${t('feat1')}</li>
@@ -873,6 +1088,7 @@ function render(){
   v.innerHTML=html;
   window.scrollTo({top:0,behavior:'instant'});
   updateChrome(r);
+  initInteractive(r);
 }
 
 function updateChrome(r){
@@ -891,6 +1107,8 @@ function updateChrome(r){
   if(fc) fc.innerHTML=CATS.map(c=>`<li><a onclick="goCat('${c.id}')">${nm(c.name)}</a></li>`).join('');
   const country=document.getElementById('footCountry');
   if(country) country.textContent=t('countryLine');
+  const sb=document.getElementById('stickyBtn'); if(sb) sb.textContent=t('sticky');
+  const fcall=document.getElementById('floatCall'); if(fcall) fcall.title=t('callTitle');
 }
 
 /* ---------- INTERACTIONS ---------- */
@@ -898,6 +1116,89 @@ function setLang(l){LANG=l;localStorage.setItem('grata_lang',l);render();}
 function scrollForm(){const f=document.getElementById('inquiry');if(f)f.scrollIntoView({behavior:'smooth'});}
 function toggleMenu(){document.getElementById('mnav').classList.toggle('open');}
 function closeMenu(){document.getElementById('mnav').classList.remove('open');}
+
+/* modal quick-inquiry */
+function openModal(prefill){
+  const m=document.getElementById('modal');
+  m.innerHTML=formInner(prefill||'',true);
+  m.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  const m=document.getElementById('modal');
+  m.classList.remove('open');m.innerHTML='';
+  document.body.style.overflow='';
+}
+
+/* lightbox gallery */
+function openLightbox(src){
+  const lb=document.getElementById('lightbox');
+  document.getElementById('lbimg').src=src;
+  lb.classList.add('open');document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+/* FAQ accordion */
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+
+/* scroll reveal + home animations */
+let _io;
+function initInteractive(r){
+  // reveal on scroll
+  if(_io) _io.disconnect();
+  _io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');_io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>_io.observe(el));
+
+  if(r.view==='home'){ initHero(); initCounters(); }
+}
+
+/* hero slideshow — only shows images that actually load */
+function initHero(){
+  const box=document.getElementById('heroSlides');
+  if(!box) return;
+  const loaded=[];
+  let built=false;
+  HERO_SLIDES.forEach(src=>{
+    const im=new Image();
+    im.onload=()=>{loaded.push(src);build();};
+    im.src=src;
+  });
+  function build(){
+    if(built) return; built=true;
+    box.innerHTML=loaded.map((s,i)=>`<div class="slide${i===0?' on':''}" style="background-image:url('${s}')"></div>`).join('');
+    const slides=box.querySelectorAll('.slide');
+    if(slides.length<2) return;
+    let i=0;
+    setInterval(()=>{
+      slides[i].classList.remove('on');
+      i=(i+1)%slides.length;
+      slides[i].classList.add('on');
+    },5000);
+  }
+}
+
+/* animated stat counters */
+function initCounters(){
+  const nums=document.querySelectorAll('.num[data-count]');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target, target=+el.getAttribute('data-count'), suf=el.getAttribute('data-suffix')||'';
+      let n=0; const step=Math.max(1,Math.round(target/30));
+      const iv=setInterval(()=>{n+=step;if(n>=target){n=target;clearInterval(iv);}el.textContent=n+suf;},30);
+      obs.unobserve(el);
+    });
+  },{threshold:.5});
+  nums.forEach(n=>obs.observe(n));
+}
+
+/* global key handling */
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape'){closeModal();closeLightbox();}});
 
 window.addEventListener('hashchange',render);
 render();
